@@ -1,0 +1,226 @@
+:root {
+  --correct-color: #4CAF50;
+  --wrong-color: #FF5722;
+  --reset-color: #3F51B5;
+  --text-color: white;
+  --exact-color: #FFA500;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.container,
+.settings-container {
+  background-color: #ffffff;
+  padding: 20px 40px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn {
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  min-width: 150px;
+  /* Set a fixed width for the buttons. */
+  text-align: center;
+  /* Center the text within the buttons. */
+}
+
+#correctButton {
+  background-color: var(--correct-color);
+  color: var(--text-color);
+}
+
+#wrongButton {
+  background-color: var(--wrong-color);
+  color: var(--text-color);
+}
+
+#resetButton {
+  background-color: var(--reset-color);
+  color: var(--text-color);
+}
+
+.success {
+  color: var(--correct-color);
+}
+
+.warning {
+  color: var(--wrong-color);
+}
+
+.exact-good {
+  color: var(--exact-color);
+}
+
+.exact-bad {
+  color: var(--exact-color);
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.result {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#pimsleurLogo {
+  max-width: 150px;
+  /* Adjust as necessary for the logo size. */
+  margin-bottom: 10px;
+}
+
+.logo p {
+  font-size: 14px;
+  color: #666;
+  margin-top: 10px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  /* Spaces out the child elements. */
+  gap: 20px;
+}
+
+/* Custom Checkbox */
+.custom-checkbox {
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 20px;
+  padding-top: 4px;
+}
+
+.custom-checkbox input {
+  display: none;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+}
+
+.custom-checkbox:hover input~.checkmark {
+  background-color: #f5f5f5;
+}
+
+.custom-checkbox input:checked~.checkmark {
+  background-color: #2196F3;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.custom-checkbox input:checked~.checkmark:after {
+  display: block;
+}
+
+.custom-checkbox .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+/* Collapsible Manual */
+.settings-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  margin: 56px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.manual-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.manual-toggle {
+  background-color: #2196F3;
+  color: white;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.settings-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  margin: auto;
+}
+
+.flex-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+
+.manual-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  background-color: #f5f5f5;
+  padding: 0 20px;
+}
+
+.settings-toggle {
+  margin-top: 10px;
+}

@@ -1,0 +1,141 @@
+let correctCount = 0;
+let wrongCount = 0;
+let actionStack = []; // To store our actions
+
+const correctButton = document.getElementById('correctButton');
+const wrongButton = document.getElementById('wrongButton');
+const correctCountEl = document.getElementById('correctCount');
+const wrongCountEl = document.getElementById('wrongCount');
+const correctPercentageEl = document.getElementById('correctPercentage');
+const wrongPercentageEl = document.getElementById('wrongPercentage');
+const resetButton = document.getElementById('resetButton');
+const correctResultElem = document.querySelector('.correct-container .result');
+const wrongResultElem = document.querySelector('.wrong-container .result');
+
+const goodKeyCheckbox = document.getElementById('goodKeyCheckbox');
+const goodArrowKeyCheckbox = document.getElementById('goodArrowKeyCheckbox');
+const badKeyCheckbox = document.getElementById('badKeyCheckbox');
+const badArrowKeyCheckbox = document.getElementById('badArrowKeyCheckbox');
+const revertButton = document.getElementById('revertButton');
+
+const manualToggle = document.querySelector('.manual-toggle');
+const manualContent = document.getElementById('manualContent');
+
+let prevCorrectCount = 0;
+let prevWrongCount = 0;
+
+function updateCounts() {
+  let total = correctCount + wrongCount;
+
+  correctCountEl.innerText = correctCount;
+  wrongCountEl.innerText = wrongCount;
+
+  if (total === 0) {
+    correctPercentageEl.innerText = "0%";
+    wrongPercentageEl.innerText = "0%";
+  } else {
+    correctPercentageEl.innerText = ((correctCount / total) * 100).toFixed(0) + "%";
+    wrongPercentageEl.innerText = ((wrongCount / total) * 100).toFixed(0) + "%";
+  }
+
+  updateColor();
+}
+
+function updateColor() {
+  const correctPercentage = parseInt(correctPercentageEl.innerText, 10);
+  const wrongPercentage = parseInt(wrongPercentageEl.innerText, 10);
+
+  // Reset classes
+  correctResultElem.classList.remove('success', 'exact-good');
+  wrongResultElem.classList.remove('warning', 'exact-bad');
+
+  // Good color update
+  if (correctPercentage > 80) {
+    correctResultElem.classList.add('success');
+  } else if (correctPercentage === 80) {
+    correctResultElem.classList.add('exact-good');
+  }
+
+  // Bad color update
+  if (wrongPercentage > 20) {
+    wrongResultElem.classList.add('warning');
+  } else if (wrongPercentage === 20) {
+    wrongResultElem.classList.add('exact-bad');
+  }
+}
+
+correctButton.addEventListener('click', function () {
+  actionStack.push('correct'); // store the action
+  correctCount++;
+  updateCounts();
+});
+
+wrongButton.addEventListener('click', function () {
+  actionStack.push('wrong'); // store the action
+  wrongCount++;
+  updateCounts();
+});
+
+resetButton.addEventListener('click', function () {
+  correctCount = 0;
+  wrongCount = 0;
+  actionStack = []; // reset the action stack
+  updateCounts();
+});
+
+revertButton.addEventListener('click', function () {
+  const lastAction = actionStack.pop(); // get the last action
+  if (lastAction === 'correct') {
+    correctCount--;
+  } else if (lastAction === 'wrong') {
+    wrongCount--;
+  }
+  updateCounts();
+});
+
+document.addEventListener('keydown', function (event) {
+  if (goodKeyCheckbox.checked && event.key === 'g') {
+    prevCorrectCount = correctCount;
+    prevWrongCount = wrongCount;
+
+    correctButton.click();
+  }
+  if (goodArrowKeyCheckbox.checked && event.key === 'ArrowRight') {
+    prevCorrectCount = correctCount;
+    prevWrongCount = wrongCount;
+
+    correctButton.click();
+  }
+  if (badKeyCheckbox.checked && event.key === 'b') {
+    prevCorrectCount = correctCount;
+    prevWrongCount = wrongCount;
+
+    wrongButton.click();
+  }
+  if (badArrowKeyCheckbox.checked && event.key === 'ArrowLeft') {
+    prevCorrectCount = correctCount;
+    prevWrongCount = wrongCount;
+
+    wrongButton.click();
+  }
+});
+
+manualToggle.addEventListener('click', () => {
+  if (manualContent.style.maxHeight) {
+    manualContent.style.maxHeight = null;
+  } else {
+    manualContent.style.maxHeight = manualContent.scrollHeight + "px";
+  }
+});
+
+document.querySelector('.settings-toggle').addEventListener('click', function () {
+  const settingsContent = document.getElementById('settingsContent');
+
+  if (settingsContent.classList.contains('expanded')) {
+    settingsContent.classList.remove('expanded');
+    settingsContent.style.maxHeight = null; // Reset to CSS value when collapsing
+  } else {
+    settingsContent.style.maxHeight = settingsContent.scrollHeight + "px"; // Set to actual content height when expanding
+    settingsContent.classList.add('expanded');
+  }
+});

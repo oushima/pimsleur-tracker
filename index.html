@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pimsleur Progress Tracker</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <div class="main-container">
+    <div class="container">
+      <!-- Pimsleur Logo -->
+      <div class="logo">
+        <img src="assets/images/pimsleur-logo.png" alt="Pimsleur Logo" id="pimsleurLogo">
+        <p>This tracker helps you gauge your progress in Pimsleur lessons. Aim for 80% mastery before advancing.</p>
+      </div>
+
+      <!-- Rest of the content -->
+      <div class="center-content">
+        <div class="row">
+          <div class="wrong-container">
+            <button class="btn" id="wrongButton">✗ Bad</button>
+            <p class="result">Bad: <span id="wrongCount">0</span> (<span id="wrongPercentage">0%</span>)</p>
+          </div>
+          <div class="correct-container">
+            <button class="btn" id="correctButton">✓ Good</button>
+            <p class="result">Good: <span id="correctCount">0</span> (<span id="correctPercentage">0%</span>)</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <button class="btn" id="revertButton">↩ Undo</button>
+          <button class="btn" id="resetButton">♻ Done</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="settings-container">
+      <button class="settings-toggle btn">⚙️ View Settings</button>
+
+      <div class="settings-content" id="settingsContent">
+
+        <!-- Enhanced Checkbox Containers -->
+        <div class="options-container">
+          <div class="checkbox-container">
+            <label class="custom-checkbox">
+              <input type="checkbox" id="goodKeyCheckbox" checked="true">
+              <span class="checkmark"></span>
+              Enable 'G' for Good
+            </label>
+          </div>
+          <div class="checkbox-container">
+
+            <label class="custom-checkbox">
+              <input type="checkbox" id="goodArrowKeyCheckbox" checked="true">
+              <span class="checkmark"></span>
+              Enable 'Right Arrow' for Good
+            </label>
+          </div>
+
+          <div class="checkbox-container">
+            <label class="custom-checkbox">
+              <input type="checkbox" id="badKeyCheckbox" checked="true">
+              <span class="checkmark"></span>
+              Enable 'B' for Bad
+            </label>
+          </div>
+
+          <div class="checkbox-container">
+            <label class="custom-checkbox">
+              <input type="checkbox" id="badArrowKeyCheckbox" checked="true">
+              <span class="checkmark"></span>
+              Enable 'Left Arrow' for Bad
+            </label>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Collapsible Manual -->
+      <div class="manual-container">
+        <button class="manual-toggle btn">📘 View Manual</button>
+        <div class="manual-content" id="manualContent">
+          <p><strong>'G' for Good:</strong> Press the 'G' key to mark an answer as good.</p>
+          <p><strong>Right Arrow for Good:</strong> Press the 'Right Arrow' key to mark an answer as good.</p>
+          <p><strong>'B' for Bad:</strong> Press the 'B' key to mark an answer as bad.</p>
+          <p><strong>Left Arrow for Bad:</strong> Press the 'Left Arrow' key to mark an answer as bad.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <script src="js/script.js"></script>
+</body>
+
+</html>
