@@ -1,3 +1,7 @@
+* {
+  touch-action: none !important;
+}
+
 :root {
   --correct-color: #4CAF50;
   --wrong-color: #FF5722;
