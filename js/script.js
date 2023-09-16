@@ -77,10 +77,22 @@ wrongButton.addEventListener('click', function () {
 });
 
 resetButton.addEventListener('click', function () {
+  // Show the confirmation modal
+  document.getElementById('confirmationModal').style.display = 'flex';
+});
+
+document.getElementById('confirmDone').addEventListener('click', function() {
+  // Reset the data when 'Confirm' button in the modal is clicked
   correctCount = 0;
   wrongCount = 0;
   actionStack = []; // reset the action stack
   updateCounts();
+  document.getElementById('confirmationModal').style.display = 'none'; // Close the modal
+});
+
+document.getElementById('cancelDone').addEventListener('click', function() {
+  // Simply close the modal without resetting the data
+  document.getElementById('confirmationModal').style.display = 'none';
 });
 
 revertButton.addEventListener('click', function () {
@@ -139,3 +151,10 @@ document.querySelector('.settings-toggle').addEventListener('click', function ()
     settingsContent.classList.add('expanded');
   }
 });
+
+// Optional: Close the modal if clicked outside of it
+window.onclick = function(event) {
+  if (event.target == document.getElementById('confirmationModal')) {
+    document.getElementById('confirmationModal').style.display = 'none';
+  }
+}
