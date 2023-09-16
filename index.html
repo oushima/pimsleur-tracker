@@ -7,6 +7,8 @@
   <title>Pimsleur Progress Tracker</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="assets/images/pimsleur-icon.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="HandheldFriendly" content="true" />
 </head>
 
 <body>
@@ -21,6 +23,10 @@
       <!-- Rest of the content -->
       <div class="center-content">
         <div class="row">
+          <button class="btn" id="revertButton">↩ Undo</button>
+          <button class="btn" id="resetButton">♻ Done</button>
+        </div>
+        <div class="row">
           <div class="wrong-container">
             <button class="btn" id="wrongButton">✗ Bad</button>
             <p class="result">Bad: <span id="wrongCount">0</span> (<span id="wrongPercentage">0%</span>)</p>
@@ -31,10 +37,7 @@
           </div>
         </div>
 
-        <div class="row">
-          <button class="btn" id="revertButton">↩ Undo</button>
-          <button class="btn" id="resetButton">♻ Done</button>
-        </div>
+
       </div>
     </div>
 
