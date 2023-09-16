@@ -13,6 +13,7 @@ body {
   align-items: center;
   height: 100vh;
   background-color: #f4f4f4;
+  margin: 0px;
 }
 
 .main-container {
@@ -223,4 +224,11 @@ body {
 
 .settings-toggle {
   margin-top: 10px;
+}
+
+/* Mobile styles */
+@media only screen and (max-width: 768px) {
+  .main-container {
+    scale: 0.8;
+  }
 }
