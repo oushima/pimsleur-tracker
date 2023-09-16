@@ -6,10 +6,6 @@
   --exact-color: #FFA500;
 }
 
-* {
-  touch-action: manipulation;
-}
-
 body {
   font-family: 'Arial', sans-serif;
   display: flex;
