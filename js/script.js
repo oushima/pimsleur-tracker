@@ -100,6 +100,7 @@ correctButton.addEventListener("click", function () {
   }
 
   if (soundEnabled) {
+    positiveSound.load();
     positiveSound.play();
   }
   actionStack.push("correct"); // store the action
@@ -112,6 +113,7 @@ wrongButton.addEventListener("click", function () {
     navigator.vibrate([100, 50, 100]);
   }
   if (soundEnabled) {
+    negativeSound.load();
     negativeSound.play();
   }
   actionStack.push("wrong"); // store the action
