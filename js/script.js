@@ -2,6 +2,7 @@ let correctCount = 0;
 let wrongCount = 0;
 let actionStack = []; // To store our actions
 let vibrationEnabled = true;
+let soundEnabled = true;
 
 const correctButton = document.getElementById("correctButton");
 const wrongButton = document.getElementById("wrongButton");
@@ -21,6 +22,10 @@ const revertButton = document.getElementById("revertButton");
 
 const manualToggle = document.querySelector(".manual-toggle");
 const manualContent = document.getElementById("manualContent");
+
+const soundToggle = document.getElementById("soundToggle");
+const positiveSound = document.getElementById("positiveSound");
+const negativeSound = document.getElementById("negativeSound");
 
 let prevCorrectCount = 0;
 let prevWrongCount = 0;
@@ -93,6 +98,10 @@ correctButton.addEventListener("click", function () {
   if (vibrationEnabled) {
     navigator.vibrate([50, 30, 50]);
   }
+
+  if (soundEnabled) {
+    positiveSound.play();
+  }
   actionStack.push("correct"); // store the action
   correctCount++;
   updateCounts();
@@ -101,6 +110,9 @@ correctButton.addEventListener("click", function () {
 wrongButton.addEventListener("click", function () {
   if (vibrationEnabled) {
     navigator.vibrate([100, 50, 100]);
+  }
+  if (soundEnabled) {
+    negativeSound.play();
   }
   actionStack.push("wrong"); // store the action
   wrongCount++;

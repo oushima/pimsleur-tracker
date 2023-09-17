@@ -76,9 +76,17 @@
 
               <div class="checkbox-container">
                 <label class="custom-checkbox">
-                  <input type="checkbox" id="vibrationToggle" checked="true" />
+                  <input type="checkbox" id="soundToggle" checked="true" />
                   <span class="checkmark"></span>
-                  Enable Vibration
+                  Enable Sound
+                </label>
+              </div>
+
+              <div class="checkbox-container">
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="vibrationToggle" />
+                  <span class="checkmark"></span>
+                  Enable Vibration (unsupported by iOS)
                 </label>
               </div>
 
@@ -134,6 +142,18 @@
             </p>
 
             <p>
+              <strong>Toggle Sound:</strong> Enable or disable sound feedback
+              for the 'Bad' and 'Good' buttons.
+            </p>
+
+            <p>
+              <strong>Toggle Vibration:</strong> Enable or disable vibration
+              feedback for the 'Bad' and 'Good' buttons. Note: May not be
+              supported on iOS or certain browsers, and may require proper
+              permissions.
+            </p>
+
+            <p>
               <strong>'G' for Good:</strong> Press the 'G' key to mark an answer
               as good.
             </p>
@@ -164,6 +184,8 @@
       </div>
     </div>
 
+    <audio id="positiveSound" src="assets/audio/positive-1-flat.mp4"></audio>
+    <audio id="negativeSound" src="assets/audio/negative-1-flat.mp4"></audio>
     <script src="js/script.js"></script>
   </body>
 </html>
