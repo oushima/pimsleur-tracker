@@ -1,9 +1,48 @@
+/* OpenSans Regular */
+@font-face {
+  font-family: "Open Sans";
+  src: url("../assets/fonts/open-sans/static/OpenSans-Regular.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* OpenSans Bold */
+@font-face {
+  font-family: "Open Sans";
+  src: url("../assets/fonts/open-sans/static/OpenSans-Bold.ttf")
+    format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* OpenSans Italic */
+@font-face {
+  font-family: "Open Sans";
+  src: url("../assets/fonts/open-sans/static/OpenSans-Italic.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+
+/* OpenSans Bold Italic */
+@font-face {
+  font-family: "Open Sans";
+  src: url("../assets/fonts/open-sans/static/OpenSans-BoldItalic.ttf")
+    format("truetype");
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* ...and so on for other variations */
+
 html,
 body {
   touch-action: manipulation !important;
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
+  font-family: "Open Sans", "Times New Roman", Times, serif !important;
 }
 
 :root {
@@ -20,7 +59,6 @@ body {
 }
 
 body {
-  font-family: "Arial", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
