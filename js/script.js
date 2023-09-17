@@ -184,3 +184,27 @@ window.onclick = function (event) {
     document.getElementById("confirmationModal").style.display = "none";
   }
 };
+
+// Dark mode.
+document.addEventListener("DOMContentLoaded", (event) => {
+  const darkModeToggle = document.getElementById("darkModeToggle");
+  let isDarkMode = false;
+
+  // Check for existing dark mode preference
+  if (localStorage.getItem("isDarkMode") === "true") {
+    document.body.classList.add("dark-mode");
+    isDarkMode = true;
+  }
+
+  // Toggle dark mode on button click
+  darkModeToggle.addEventListener("click", () => {
+    isDarkMode = !isDarkMode;
+    localStorage.setItem("isDarkMode", isDarkMode);
+
+    if (isDarkMode) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  });
+});
