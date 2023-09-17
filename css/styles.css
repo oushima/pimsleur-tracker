@@ -148,7 +148,7 @@ body {
   width: 120px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
   border: none;
-  padding: 0xp;
+  padding: 0px;
   transition: ease-in-out 0.1s;
 }
 
@@ -390,7 +390,7 @@ body {
 .modalButtons {
   display: flex;
   flex-direction: row;
-  scale: 0.8;
+  transform: scale(0.8);
   justify-content: center;
 }
 
@@ -558,8 +558,7 @@ body.dark-mode {
 /* Mobile styles */
 @media only screen and (max-width: 768px) {
   .main-container {
-    width: 400px;
-    scale: 0.55;
+    transform: scale(0.55);
   }
 
   .table-results-container {
