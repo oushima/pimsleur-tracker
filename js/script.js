@@ -2,7 +2,7 @@ let correctCount = 0;
 let wrongCount = 0;
 let actionStack = []; // To store our actions
 let vibrationEnabled = false;
-let soundEnabled = false;
+let soundEnabled = true;
 
 const correctButton = document.getElementById("correctButton");
 const wrongButton = document.getElementById("wrongButton");
