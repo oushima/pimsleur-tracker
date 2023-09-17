@@ -2,22 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pimsleur Progress Tracker</title>
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="icon" href="assets/images/pimsleur-icon.png" type="image/png" />
-    <link rel="apple-touch-icon" href="assets/images/pimsleur-ios-icon.png" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
+    <title>Pimsleur Progress Tracker</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" href="assets/images/pimsleur-icon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="assets/images/pimsleur-ios-icon.png" />
     <script src="js/script.js" defer></script>
   </head>
 
   <body>
     <div class="main-container">
       <div class="container">
-        <!-- Pimsleur Logo -->
         <div class="logo">
           <img
             src="assets/images/pimsleur-logo.png"
@@ -29,18 +27,13 @@
             for 80% mastery before advancing.
           </p>
         </div>
-
-        <!-- Main content. -->
         <div class="center-content">
           <div class="row">
             <button class="btn" id="revertButton">↩ Undo</button>
             <button class="btn" id="resetButton">♻ Done</button>
           </div>
-
-          <!-- Table. -->
           <div class="line"></div>
           <div class="table-results-container" id="rowContainer">
-            <!-- Example rows -->
             <div class="table-results demo-row">
               <div class="good">Good:</div>
               <div>12:34:56</div>
@@ -60,7 +53,6 @@
           </div>
           <button id="filterButton" class="filter-button btn">🧹 Filter</button>
           <div class="line"></div>
-          <!-- End table. -->
 
           <div class="row">
             <div class="wrong-container">
@@ -94,7 +86,7 @@
               <!-- Add Dark Mode Toggle Button -->
               <div class="checkbox-container">
                 <label class="custom-checkbox">
-                  <input type="checkbox" id="darkModeToggle" checked="true" />
+                  <input type="checkbox" id="darkModeToggle" checked />
                   <span class="checkmark"></span>
                   🔦 Toggle Dark Mode
                 </label>
@@ -102,7 +94,7 @@
 
               <div class="checkbox-container">
                 <label class="custom-checkbox">
-                  <input type="checkbox" id="soundToggle" checked="false" />
+                  <input type="checkbox" id="soundToggle" checked />
                   <span class="checkmark"></span>
                   🔊 Enable Sound
                 </label>
@@ -110,7 +102,7 @@
 
               <div class="checkbox-container">
                 <label class="custom-checkbox">
-                  <input type="checkbox" id="goodGKeyCheckbox" checked="true" />
+                  <input type="checkbox" id="goodGKeyCheckbox" checked />
                   <span class="checkmark"></span>
                   Enable 'G' for Good
                 </label>
@@ -120,7 +112,7 @@
                   <input
                     type="checkbox"
                     id="goodRightArrowKeyCheckbox"
-                    checked="true"
+                    checked
                   />
                   <span class="checkmark"></span>
                   Enable 'Right Arrow' for Good
@@ -129,7 +121,7 @@
 
               <div class="checkbox-container">
                 <label class="custom-checkbox">
-                  <input type="checkbox" id="badGKeyCheckbox" checked="true" />
+                  <input type="checkbox" id="badGKeyCheckbox" checked />
                   <span class="checkmark"></span>
                   Enable 'B' for Bad
                 </label>
@@ -137,11 +129,7 @@
 
               <div class="checkbox-container">
                 <label class="custom-checkbox">
-                  <input
-                    type="checkbox"
-                    id="badArrowKeyCheckbox"
-                    checked="true"
-                  />
+                  <input type="checkbox" id="badArrowKeyCheckbox" checked />
                   <span class="checkmark"></span>
                   Enable 'Left Arrow' for Bad
                 </label>
@@ -149,58 +137,42 @@
 
               <div class="checkbox-container">
                 <label class="custom-checkbox">
-                  <input
-                    type="checkbox"
-                    id="goodEnterKeyCheckbox"
-                    checked="true"
-                  />
+                  <input type="checkbox" id="goodEnterKeyCheckbox" checked />
                   <span class="checkmark"></span>
                   Enable 'Enter' for Good
                 </label>
               </div>
               <div class="checkbox-container">
                 <label class="custom-checkbox">
-                  <input
-                    type="checkbox"
-                    id="goodPeriodKeyCheckbox"
-                    checked="true"
-                  />
+                  <input type="checkbox" id="goodPeriodKeyCheckbox" checked />
                   <span class="checkmark"></span>
                   Enable '.' for Good
                 </label>
               </div>
               <div class="checkbox-container">
                 <label class="custom-checkbox">
-                  <input type="checkbox" id="goodYKeyCheckbox" checked="true" />
+                  <input type="checkbox" id="goodYKeyCheckbox" checked />
                   <span class="checkmark"></span>
                   Enable 'y' for Good
                 </label>
               </div>
               <div class="checkbox-container">
                 <label class="custom-checkbox">
-                  <input
-                    type="checkbox"
-                    id="badCommaKeyCheckbox"
-                    checked="true"
-                  />
+                  <input type="checkbox" id="badCommaKeyCheckbox" checked />
                   <span class="checkmark"></span>
                   Enable ',' for Bad
                 </label>
               </div>
               <div class="checkbox-container">
                 <label class="custom-checkbox">
-                  <input type="checkbox" id="badNKeyCheckbox" checked="true" />
+                  <input type="checkbox" id="badNKeyCheckbox" checked />
                   <span class="checkmark"></span>
                   Enable 'n' for Bad
                 </label>
               </div>
               <div class="checkbox-container">
                 <label class="custom-checkbox">
-                  <input
-                    type="checkbox"
-                    id="badBackspaceKeyCheckbox"
-                    checked="true"
-                  />
+                  <input type="checkbox" id="badBackspaceKeyCheckbox" checked />
                   <span class="checkmark"></span>
                   Enable 'Backspace' for Bad
                 </label>

@@ -13,7 +13,7 @@ let darkModeEnabled = true;
 const isTouchDevice = "ontouchstart" in window; // Check if the device supports touch events
 let correctButtonCooldown = false;
 let wrongButtonCooldown = false;
-const cooldownTime = 1000; // In milliseconds.
+const cooldownTime = 500; // In milliseconds.
 const rowContainer = document.getElementById("rowContainer");
 const filterButton = document.getElementById("filterButton");
 
@@ -315,6 +315,7 @@ function performCorrectAction() {
   actionStack.push("correct");
   correctCount++;
   updateCounts();
+  addRow("good");
 }
 
 // Common logic for wrong actions
@@ -337,6 +338,7 @@ function performWrongAction() {
   actionStack.push("wrong");
   wrongCount++;
   updateCounts();
+  addRow("bad");
 }
 
 if (isTouchDevice) {
@@ -344,25 +346,21 @@ if (isTouchDevice) {
   correctButton.addEventListener("touchstart", function (event) {
     event.preventDefault();
     performCorrectAction();
-    addRow("good");
   });
 
   wrongButton.addEventListener("touchstart", function (event) {
     event.preventDefault();
     performWrongAction();
-    addRow("bad");
   });
 } else {
   correctButton.addEventListener("click", function () {
     performCorrectAction();
     removeDemoRows();
-    addRow("good");
   });
 
   wrongButton.addEventListener("click", function () {
     performWrongAction();
     removeDemoRows();
-    addRow("bad");
   });
 }
 
