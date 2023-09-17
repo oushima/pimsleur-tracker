@@ -5,6 +5,9 @@ let vibrationEnabled = false;
 let soundEnabled = true;
 let darkModeEnabled = true;
 const isTouchDevice = "ontouchstart" in window; // Check if the device supports touch events
+let correctButtonCooldown = false;
+let wrongButtonCooldown = false;
+const cooldownTime = 1000; // 500 milliseconds
 
 const correctButton = document.getElementById("correctButton");
 const wrongButton = document.getElementById("wrongButton");
@@ -233,6 +236,12 @@ function initializeDarkModeSetting() {
 
 // Common logic for correct actions
 function performCorrectAction() {
+  if (correctButtonCooldown) return;
+  correctButtonCooldown = true;
+  setTimeout(() => {
+    correctButtonCooldown = false;
+  }, cooldownTime);
+
   if (vibrationEnabled) {
     navigator.vibrate([50, 30, 50]);
   }
@@ -249,6 +258,12 @@ function performCorrectAction() {
 
 // Common logic for wrong actions
 function performWrongAction() {
+  if (wrongButtonCooldown) return;
+  wrongButtonCooldown = true;
+  setTimeout(() => {
+    wrongButtonCooldown = false;
+  }, cooldownTime);
+
   if (vibrationEnabled) {
     navigator.vibrate([100, 50, 100]);
   }
