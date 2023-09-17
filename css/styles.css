@@ -494,49 +494,53 @@ body.dark-mode {
 }
 
 .table-results-container {
-  max-height: 165px; /* 3.5 rows of 40px each, plus a little space in between */
+  max-height: 175px; /* 3.5 rows of 40px each, plus a little space in between */
   width: 28vh;
   overflow-y: auto;
   min-height: 165px; /* 3.5 rows x 30px each + 5px gaps = 125px */
   position: relative;
 }
 
-.table-results {
+.table-results,
+.demo-row {
   display: flex;
   justify-content: space-between;
   padding: 10px;
   border-bottom: 1px solid grey;
   animation: slideDown 0.3s ease-out;
   border: none;
-  border-radius: 8px;
-  margin: 4px;
+  border-radius: 2px;
+  margin: 8px;
   display: flex;
   justify-content: space-between;
 }
 
-.table-results.good {
+.table-results.good,
+.demo-row-good {
   flex: 1;
   background-color: var(--correct-color-2);
   color: white;
 }
 
-.dark-mode .table-results.good {
+.dark-mode .table-results.good,
+.demo-row-good {
   background-color: var(--correct-color-3);
 }
 
-.table-results.bad {
+.table-results.bad,
+.demo-row-bad {
   flex: 1;
   background-color: var(--wrong-color-2);
   color: white;
 }
 
-.dark-mode .table-results.bad {
+.dark-mode .table-results.bad,
+.demo-row-bad {
   background-color: var(--wrong-color-3);
 }
 
 .demo-row {
-  font-style: italic;
-  opacity: 0.6;
+  opacity: 0.5;
   color: var(--dark-color-1);
 }
 
@@ -570,10 +574,22 @@ body.dark-mode {
   background: radial-gradient(circle at center, #faa61a, #d08800);
 }
 
+.filter-mode-off,
+.filter-mode-off:hover {
+  background: radial-gradient(circle at center, #faa61a, #d08800);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .filter-mode-bad {
   background: radial-gradient(circle, var(--wrong-color-3), #992c2c);
 }
 
 .filter-mode-good {
   background: radial-gradient(circle, var(--correct-color), #4b8e79);
+}
+
+.jing-jing {
+  width: 200px;
+  height: 200px;
 }

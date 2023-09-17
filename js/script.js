@@ -1,9 +1,3 @@
-// DISABLE IN DEVELOPMENT.
-// window.onerror = function () {
-//   return true;
-// };
-// console.log = console.info = console.warn = console.error = function () {};
-
 let correctCount = 0;
 let wrongCount = 0;
 let actionStack = []; // To store our actions
@@ -129,6 +123,7 @@ document.getElementById("confirmDone").addEventListener("click", function () {
   actionStack = []; // reset the action stack
   updateCounts();
   removeAllRows();
+  filterButton.classList.add("filter-mode-off");
   document.getElementById("confirmationModal").style.display = "none"; // Close the modal
 });
 
@@ -146,6 +141,11 @@ revertButton.addEventListener("click", function () {
   }
   updateCounts();
   removeRow();
+  const rows = Array.from(rowContainer.getElementsByClassName("table-results"));
+  if (rows.length === 0) {
+    filterButton.classList.add("filter-mode-off");
+    return;
+  }
 });
 
 document.addEventListener("keydown", function (event) {
@@ -317,6 +317,7 @@ function performCorrectAction() {
   correctCount++;
   updateCounts();
   addRow("good");
+  functionFilterButtonInit();
 }
 
 // Common logic for wrong actions
@@ -340,6 +341,7 @@ function performWrongAction() {
   wrongCount++;
   updateCounts();
   addRow("bad");
+  functionFilterButtonInit();
 }
 
 if (isTouchDevice) {
@@ -453,20 +455,41 @@ function applyFilter() {
 }
 
 filterButton.addEventListener("click", () => {
-  filterButton.classList.remove("filter-mode-good");
-  filterButton.classList.remove("filter-mode-bad");
-  filterButton.classList.remove("filter-mode-all");
-
   if (filterMode === "all") {
     filterMode = "good";
-    filterButton.classList.add("filter-mode-good");
   } else if (filterMode === "good") {
     filterMode = "bad";
-    filterButton.classList.add("filter-mode-bad");
   } else {
     filterMode = "all";
-    filterButton.classList.add("filter-mode-all");
   }
-
+  functionFilterButtonInit();
   applyFilter();
 });
+
+function functionFilterButtonInit() {
+  const rows = Array.from(rowContainer.getElementsByClassName("table-results"));
+  if (rows.length === 0) {
+    filterButton.classList.add("filter-mode-off");
+    return;
+  }
+
+  filterButton.classList.remove("filter-mode-off");
+  filterButton.classList.remove("filter-mode-all");
+  filterButton.classList.remove("filter-mode-good");
+  filterButton.classList.remove("filter-mode-bad");
+
+  switch (filterMode) {
+    case "all": {
+      filterButton.classList.add("filter-mode-all");
+      break;
+    }
+    case "good": {
+      filterButton.classList.add("filter-mode-good");
+      break;
+    }
+    case "bad": {
+      filterButton.classList.add("filter-mode-bad");
+      break;
+    }
+  }
+}
