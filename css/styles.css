@@ -494,10 +494,14 @@ body.dark-mode {
 }
 
 .table-results-container {
+  /* Prevents the page from expanding when content is added. */
   max-height: 125px;
+
+  /* Prevents the page from expanding when content is added. */
+  min-height: 125px;
+
   width: 28vh;
   overflow-y: auto;
-  /* min-height: 105px; */
   position: relative;
 }
 
