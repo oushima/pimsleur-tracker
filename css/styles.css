@@ -588,6 +588,10 @@ body.dark-mode {
   }
 }
 
+.filter-button {
+  margin-top: -32px;
+}
+
 .filter-mode-all {
   background: radial-gradient(circle at center, #faa61a, #d08800);
 }
