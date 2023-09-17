@@ -14,6 +14,8 @@ const isTouchDevice = "ontouchstart" in window; // Check if the device supports 
 let correctButtonCooldown = false;
 let wrongButtonCooldown = false;
 const cooldownTime = 1000; // In milliseconds.
+const rowContainer = document.getElementById("rowContainer");
+const filterButton = document.getElementById("filterButton");
 
 const correctButton = document.getElementById("correctButton");
 const wrongButton = document.getElementById("wrongButton");
@@ -342,21 +344,25 @@ if (isTouchDevice) {
   correctButton.addEventListener("touchstart", function (event) {
     event.preventDefault();
     performCorrectAction();
+    addRow("good");
   });
 
   wrongButton.addEventListener("touchstart", function (event) {
     event.preventDefault();
     performWrongAction();
+    addRow("bad");
   });
 } else {
   correctButton.addEventListener("click", function () {
     performCorrectAction();
     removeDemoRows();
+    addRow("good");
   });
 
   wrongButton.addEventListener("click", function () {
     performWrongAction();
     removeDemoRows();
+    addRow("bad");
   });
 }
 
@@ -385,66 +391,52 @@ positiveSound.addEventListener("ended", function () {
 // Table.
 // ...
 
-document.addEventListener("DOMContentLoaded", function () {
-  const rowContainer = document.getElementById("rowContainer");
-  const filterButton = document.getElementById("filterButton");
-  const correctButton = document.getElementById("correctButton");
-  const wrongButton = document.getElementById("wrongButton");
+let filterMode = "all"; // all, good, bad
 
-  let filterMode = "all"; // all, good, bad
+function removeDemoRows() {
+  const demoRows = document.querySelectorAll(".demo-row");
+  demoRows.forEach((row) => row.remove());
+}
 
-  function removeDemoRows() {
-    const demoRows = document.querySelectorAll(".demo-row");
-    demoRows.forEach((row) => row.remove());
-  }
+function addRow(type) {
+  removeDemoRows(); // Remove demo rows
 
-  function addRow(type) {
-    removeDemoRows(); // Remove demo rows
+  const row = document.createElement("div");
+  row.className = `table-results ${type}`;
 
-    const row = document.createElement("div");
-    row.className = `table-results ${type}`;
+  const typeCol = document.createElement("div");
+  typeCol.innerText = type.charAt(0).toUpperCase() + type.slice(1) + ":";
 
-    const typeCol = document.createElement("div");
-    typeCol.innerText = type.charAt(0).toUpperCase() + type.slice(1) + ":";
+  const timeCol = document.createElement("div");
+  const currentTime = new Date();
+  const formattedTime =
+    currentTime.getHours().toString().padStart(2, "0") +
+    ":" +
+    currentTime.getMinutes().toString().padStart(2, "0") +
+    ":" +
+    currentTime.getSeconds().toString().padStart(2, "0");
+  timeCol.innerText = formattedTime;
 
-    const timeCol = document.createElement("div");
-    const currentTime = new Date();
-    const formattedTime =
-      currentTime.getHours().toString().padStart(2, "0") +
-      ":" +
-      currentTime.getMinutes().toString().padStart(2, "0") +
-      ":" +
-      currentTime.getSeconds().toString().padStart(2, "0");
-    timeCol.innerText = formattedTime;
+  row.appendChild(typeCol);
+  row.appendChild(timeCol);
+  rowContainer.insertBefore(row, rowContainer.firstChild); // Insert at the top
 
-    row.appendChild(typeCol);
-    row.appendChild(timeCol);
-    rowContainer.insertBefore(row, rowContainer.firstChild); // Insert at the top
+  applyFilter();
+}
 
-    applyFilter();
-  }
-
-  function applyFilter() {
-    const rows = Array.from(
-      rowContainer.getElementsByClassName("table-results")
-    );
-    rows.forEach((row) => {
-      if (filterMode === "all") {
-        row.style.display = "flex";
-      } else {
-        row.style.display = row.classList.contains(filterMode)
-          ? "flex"
-          : "none";
-      }
-    });
-  }
-
-  correctButton.addEventListener("click", () => addRow("good"));
-  wrongButton.addEventListener("click", () => addRow("bad"));
-
-  filterButton.addEventListener("click", () => {
-    filterMode =
-      filterMode === "all" ? "good" : filterMode === "good" ? "bad" : "all";
-    applyFilter();
+function applyFilter() {
+  const rows = Array.from(rowContainer.getElementsByClassName("table-results"));
+  rows.forEach((row) => {
+    if (filterMode === "all") {
+      row.style.display = "flex";
+    } else {
+      row.style.display = row.classList.contains(filterMode) ? "flex" : "none";
+    }
   });
+}
+
+filterButton.addEventListener("click", () => {
+  filterMode =
+    filterMode === "all" ? "good" : filterMode === "good" ? "bad" : "all";
+  applyFilter();
 });
