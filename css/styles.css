@@ -385,6 +385,10 @@ body.dark-mode {
   background-color: var(--nitro-color-dark);
 }
 
+.dark-mode hr {
+  color: var(--dark-color-3);
+}
+
 /* Mobile styles */
 @media only screen and (max-width: 768px) {
   .main-container {
