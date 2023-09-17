@@ -54,6 +54,7 @@ body {
   --wrong-color-2: #ffadad;
   --reset-color: #3f51b5;
   --text-color: white;
+  --text-color-2: #666;
   --exact-color: #ffa500;
   --nitro-color: #ff73fa;
   --nitro-color-dark: #cc5bad;
@@ -449,7 +450,8 @@ body.dark-mode {
 }
 
 .dark-mode .result {
-  border: solid 2px var(--dark-color-3);
+  border: solid 2px var(--text-color-2);
+  color: var(--text-color-2);
 }
 
 .button-animation {
