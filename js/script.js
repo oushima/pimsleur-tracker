@@ -431,7 +431,10 @@ function removeRow() {
 
   if (rowsWithClass.length > 0) {
     const lastElement = rowsWithClass[0];
-    rowContainer.removeChild(lastElement);
+    lastElement.classList.add("remove-element-animation");
+    setTimeout(() => {
+      rowContainer.removeChild(lastElement);
+    }, 400);
   }
 
   applyFilter();
