@@ -66,8 +66,8 @@ body {
   user-select: none; /* Standard syntax */
 }
 
-.btn:hover {
-  transform: translateY(-0.25rem) scale(1.01);
+.btn:active {
+  transform: translateY(-0.25rem) scale(0.9);
   transition-duration: 0.2s;
 }
 
@@ -104,6 +104,7 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
   border: none;
   padding: 0xp;
+  transition: ease-in-out 0.1s;
 }
 
 #wrongButton {
