@@ -404,7 +404,8 @@ function addRow(type) {
   row.className = `table-results ${type}`;
 
   const typeCol = document.createElement("div");
-  typeCol.innerText = type.charAt(0).toUpperCase() + type.slice(1) + ":";
+  // Bad: Good:
+  typeCol.innerText = type.charAt(0).toUpperCase() + type.slice(1);
 
   const timeCol = document.createElement("div");
   const currentTime = new Date();
