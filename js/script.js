@@ -259,6 +259,52 @@ function initializeDarkModeSetting() {
   darkModeEnabled = darkModeCheckbox.checked;
 }
 
+// Common logic for correct actions
+function performCorrectAction() {
+  if (vibrationEnabled) {
+    navigator.vibrate([50, 30, 50]);
+  }
+
+  if (soundEnabled) {
+    positiveSound.load();
+    positiveSound.muted = false;
+    positiveSound.play();
+  }
+  actionStack.push("correct");
+  correctCount++;
+  updateCounts();
+}
+
+// Common logic for wrong actions
+function performWrongAction() {
+  if (vibrationEnabled) {
+    navigator.vibrate([100, 50, 100]);
+  }
+
+  if (soundEnabled) {
+    negativeSound.load();
+    negativeSound.muted = false;
+    negativeSound.play();
+  }
+  actionStack.push("wrong");
+  wrongCount++;
+  updateCounts();
+}
+
+correctButton.addEventListener("click", performCorrectAction);
+wrongButton.addEventListener("click", performWrongAction);
+
+// New: touchstart event for mobile compatibility
+correctButton.addEventListener("touchstart", function (event) {
+  event.preventDefault();
+  performCorrectAction();
+});
+
+wrongButton.addEventListener("touchstart", function (event) {
+  event.preventDefault();
+  performWrongAction();
+});
+
 window.addEventListener("load", initializeVibrationSetting);
 window.addEventListener("load", initializeSoundSetting);
 window.addEventListener("load", initializeDarkModeSetting);
