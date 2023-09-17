@@ -494,7 +494,7 @@ body.dark-mode {
 }
 
 .table-results-container {
-  max-height: 175px; /* 3.5 rows of 40px each, plus a little space in between */
+  max-height: 165px; /* 3.5 rows of 40px each, plus a little space in between */
   width: 28vh;
   overflow-y: auto;
   min-height: 165px; /* 3.5 rows x 30px each + 5px gaps = 125px */
@@ -510,7 +510,7 @@ body.dark-mode {
   animation: slideDown 0.3s ease-out;
   border: none;
   border-radius: 2px;
-  margin: 8px;
+  margin: 4px;
   display: flex;
   justify-content: space-between;
 }
