@@ -565,3 +565,15 @@ body.dark-mode {
     width: 75vw;
   }
 }
+
+.filter-mode-all {
+  background: radial-gradient(circle at center, #faa61a, #d08800);
+}
+
+.filter-mode-bad {
+  background: radial-gradient(circle, var(--wrong-color-3), #992c2c);
+}
+
+.filter-mode-good {
+  background: radial-gradient(circle, var(--correct-color), #4b8e79);
+}

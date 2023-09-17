@@ -1,8 +1,8 @@
 // DISABLE IN DEVELOPMENT.
-window.onerror = function () {
-  return true;
-};
-console.log = console.info = console.warn = console.error = function () {};
+// window.onerror = function () {
+//   return true;
+// };
+// console.log = console.info = console.warn = console.error = function () {};
 
 let correctCount = 0;
 let wrongCount = 0;
@@ -128,6 +128,7 @@ document.getElementById("confirmDone").addEventListener("click", function () {
   wrongCount = 0;
   actionStack = []; // reset the action stack
   updateCounts();
+  removeAllRows();
   document.getElementById("confirmationModal").style.display = "none"; // Close the modal
 });
 
@@ -144,6 +145,7 @@ revertButton.addEventListener("click", function () {
     wrongCount--;
   }
   updateCounts();
+  removeRow();
 });
 
 document.addEventListener("keydown", function (event) {
@@ -296,7 +298,6 @@ function initializeDarkModeSetting() {
 
 // Common logic for correct actions
 function performCorrectAction() {
-  console.log(123);
   if (correctButtonCooldown) return;
   correctButtonCooldown = true;
   setTimeout(() => {
@@ -377,18 +378,16 @@ function addAndRemoveAnimationClass(button) {
 }
 
 negativeSound.addEventListener("ended", function () {
-  audioElement.pause();
-  audioElement.currentTime = 0;
+  negativeSound.pause();
+  negativeSound.currentTime = 0;
 });
 
 positiveSound.addEventListener("ended", function () {
-  audioElement.pause();
-  audioElement.currentTime = 0;
+  positiveSound.pause();
+  positiveSound.currentTime = 0;
 });
 
 // Table.
-// ...
-
 let filterMode = "all"; // all, good, bad
 
 function removeDemoRows() {
@@ -422,6 +421,26 @@ function addRow(type) {
   applyFilter();
 }
 
+function removeRow() {
+  const rowContainer = document.getElementById("rowContainer");
+  const rowsWithClass = Array.from(
+    rowContainer.getElementsByClassName("table-results")
+  );
+
+  if (rowsWithClass.length > 0) {
+    const lastElement = rowsWithClass[0];
+    rowContainer.removeChild(lastElement);
+  }
+
+  applyFilter();
+}
+
+function removeAllRows() {
+  const rows = document.querySelectorAll(".table-results");
+  rows.forEach((row) => row.parentNode.removeChild(row));
+  applyFilter();
+}
+
 function applyFilter() {
   const rows = Array.from(rowContainer.getElementsByClassName("table-results"));
   rows.forEach((row) => {
@@ -434,7 +453,20 @@ function applyFilter() {
 }
 
 filterButton.addEventListener("click", () => {
-  filterMode =
-    filterMode === "all" ? "good" : filterMode === "good" ? "bad" : "all";
+  filterButton.classList.remove("filter-mode-good");
+  filterButton.classList.remove("filter-mode-bad");
+  filterButton.classList.remove("filter-mode-all");
+
+  if (filterMode === "all") {
+    filterMode = "good";
+    filterButton.classList.add("filter-mode-good");
+  } else if (filterMode === "good") {
+    filterMode = "bad";
+    filterButton.classList.add("filter-mode-bad");
+  } else {
+    filterMode = "all";
+    filterButton.classList.add("filter-mode-all");
+  }
+
   applyFilter();
 });
