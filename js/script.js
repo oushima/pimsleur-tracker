@@ -364,3 +364,13 @@ function addAndRemoveAnimationClass(button) {
     button.classList.remove("button-animation");
   }, 500); // Adjust the time to match your animation duration
 }
+
+negativeSound.addEventListener("ended", function () {
+  audioElement.pause();
+  audioElement.currentTime = 0;
+});
+
+positiveSound.addEventListener("ended", function () {
+  audioElement.pause();
+  audioElement.currentTime = 0;
+});
