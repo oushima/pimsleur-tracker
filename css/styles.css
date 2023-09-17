@@ -610,3 +610,7 @@ body.dark-mode {
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
 }
+
+.table-results-old-rows {
+  opacity: 0.6;
+}

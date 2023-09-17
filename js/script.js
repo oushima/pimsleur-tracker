@@ -429,6 +429,9 @@ function addRow(type) {
 
   row.appendChild(typeCol);
   row.appendChild(timeCol);
+
+  const rows = Array.from(rowContainer.getElementsByClassName("table-results"));
+  rows.forEach((row) => row.classList.add("table-results-old-rows"));
   rowContainer.insertBefore(row, rowContainer.firstChild); // Insert at the top
 
   applyFilter();
