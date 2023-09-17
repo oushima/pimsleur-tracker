@@ -410,6 +410,8 @@ function addRow(type) {
   let iconType = "";
   if (type === "good") {
     iconType = goodIcon;
+  } else {
+    iconType = badIcon;
   }
 
   typeCol.innerText =
