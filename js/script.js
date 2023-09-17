@@ -101,6 +101,7 @@ correctButton.addEventListener("click", function () {
 
   if (soundEnabled) {
     positiveSound.load();
+    positiveSound.muted = false;
     positiveSound.play();
   }
   actionStack.push("correct"); // store the action
@@ -114,6 +115,7 @@ wrongButton.addEventListener("click", function () {
   }
   if (soundEnabled) {
     negativeSound.load();
+    negativeSound.muted = false;
     negativeSound.play();
   }
   actionStack.push("wrong"); // store the action
