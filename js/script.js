@@ -1,8 +1,8 @@
 let correctCount = 0;
 let wrongCount = 0;
 let actionStack = []; // To store our actions
-let vibrationEnabled;
-let soundEnabled;
+let vibrationEnabled = false;
+let soundEnabled = false;
 
 const correctButton = document.getElementById("correctButton");
 const wrongButton = document.getElementById("wrongButton");
@@ -237,5 +237,18 @@ document
 
 // Listen for changes to the sound toggle checkbox
 document.getElementById("soundToggle").addEventListener("change", function () {
-  vibrationEnabled = this.checked;
+  soundEnabled = this.checked;
 });
+
+function initializeVibrationSetting() {
+  const vibrationCheckbox = document.getElementById("vibrationToggle");
+  vibrationEnabled = vibrationCheckbox.checked;
+}
+
+function initializeSoundSetting() {
+  const soundCheckbox = document.getElementById("soundToggle");
+  soundEnabled = soundCheckbox.checked;
+}
+
+window.addEventListener("load", initializeVibrationSetting);
+window.addEventListener("load", initializeSoundSetting);
