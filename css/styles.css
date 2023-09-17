@@ -558,7 +558,8 @@ body.dark-mode {
 /* Mobile styles */
 @media only screen and (max-width: 768px) {
   .main-container {
-    scale: 0.8;
+    width: 400px;
+    scale: 0.55;
   }
 
   .table-results-container {
