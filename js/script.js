@@ -4,6 +4,7 @@ let actionStack = []; // To store our actions
 let vibrationEnabled = false;
 let soundEnabled = true;
 let darkModeEnabled = true;
+const isTouchDevice = "ontouchstart" in window; // Check if the device supports touch events
 
 const correctButton = document.getElementById("correctButton");
 const wrongButton = document.getElementById("wrongButton");
@@ -94,35 +95,6 @@ function updateColor() {
     wrongResultElem.classList.add("exact-bad");
   }
 }
-
-correctButton.addEventListener("click", function () {
-  if (vibrationEnabled) {
-    navigator.vibrate([50, 30, 50]);
-  }
-
-  if (soundEnabled) {
-    positiveSound.load();
-    positiveSound.muted = false;
-    positiveSound.play();
-  }
-  actionStack.push("correct"); // store the action
-  correctCount++;
-  updateCounts();
-});
-
-wrongButton.addEventListener("click", function () {
-  if (vibrationEnabled) {
-    navigator.vibrate([100, 50, 100]);
-  }
-  if (soundEnabled) {
-    negativeSound.load();
-    negativeSound.muted = false;
-    negativeSound.play();
-  }
-  actionStack.push("wrong"); // store the action
-  wrongCount++;
-  updateCounts();
-});
 
 resetButton.addEventListener("click", function () {
   // Show the confirmation modal
@@ -291,19 +263,22 @@ function performWrongAction() {
   updateCounts();
 }
 
-correctButton.addEventListener("click", performCorrectAction);
-wrongButton.addEventListener("click", performWrongAction);
+if (isTouchDevice) {
+  // For touch devices
+  correctButton.addEventListener("touchstart", function (event) {
+    event.preventDefault();
+    performCorrectAction();
+  });
 
-// New: touchstart event for mobile compatibility
-correctButton.addEventListener("touchstart", function (event) {
-  event.preventDefault();
-  performCorrectAction();
-});
-
-wrongButton.addEventListener("touchstart", function (event) {
-  event.preventDefault();
-  performWrongAction();
-});
+  wrongButton.addEventListener("touchstart", function (event) {
+    event.preventDefault();
+    performWrongAction();
+  });
+} else {
+  // For non-touch devices
+  correctButton.addEventListener("click", performCorrectAction);
+  wrongButton.addEventListener("click", performWrongAction);
+}
 
 window.addEventListener("load", initializeVibrationSetting);
 window.addEventListener("load", initializeSoundSetting);
