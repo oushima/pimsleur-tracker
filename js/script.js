@@ -3,6 +3,7 @@ let wrongCount = 0;
 let actionStack = []; // To store our actions
 let vibrationEnabled = false;
 let soundEnabled = true;
+let darkModeEnabled = true;
 
 const correctButton = document.getElementById("correctButton");
 const wrongButton = document.getElementById("wrongButton");
@@ -211,20 +212,19 @@ window.onclick = function (event) {
 // Dark mode.
 document.addEventListener("DOMContentLoaded", (event) => {
   const darkModeToggle = document.getElementById("darkModeToggle");
-  let isDarkMode = false;
 
   // Check for existing dark mode preference
   if (localStorage.getItem("isDarkMode") === "true") {
     document.body.classList.add("dark-mode");
-    isDarkMode = true;
+    darkModeEnabled = true;
   }
 
   // Toggle dark mode on button click
   darkModeToggle.addEventListener("click", () => {
-    isDarkMode = !isDarkMode;
-    localStorage.setItem("isDarkMode", isDarkMode);
+    darkModeEnabled = !darkModeEnabled;
+    localStorage.setItem("isDarkMode", darkModeEnabled);
 
-    if (isDarkMode) {
+    if (darkModeEnabled) {
       document.body.classList.add("dark-mode");
     } else {
       document.body.classList.remove("dark-mode");
@@ -254,5 +254,11 @@ function initializeSoundSetting() {
   soundEnabled = soundCheckbox.checked;
 }
 
+function initializeDarkModeSetting() {
+  const darkModeCheckbox = document.getElementById("darkModeToggle");
+  darkModeEnabled = darkModeCheckbox.checked;
+}
+
 window.addEventListener("load", initializeVibrationSetting);
 window.addEventListener("load", initializeSoundSetting);
+window.addEventListener("load", initializeDarkModeSetting);
