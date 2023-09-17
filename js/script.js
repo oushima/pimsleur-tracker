@@ -128,30 +128,20 @@ revertButton.addEventListener("click", function () {
   updateCounts();
 });
 
+const goodKeys = ["g", "ArrowRight", "Enter", ".", "y"];
+const badKeys = ["b", ",", "ArrowLeft", "n", "Backspace"];
+
 document.addEventListener("keydown", function (event) {
-  if (goodKeyCheckbox.checked && event.key === "g") {
-    prevCorrectCount = correctCount;
-    prevWrongCount = wrongCount;
-
-    correctButton.click();
-  }
-  if (goodArrowKeyCheckbox.checked && event.key === "ArrowRight") {
-    prevCorrectCount = correctCount;
-    prevWrongCount = wrongCount;
-
-    correctButton.click();
-  }
-  if (badKeyCheckbox.checked && event.key === "b") {
+  if (badKeyCheckbox.checked && badKeys.includes(event.key)) {
     prevCorrectCount = correctCount;
     prevWrongCount = wrongCount;
 
     wrongButton.click();
   }
-  if (badArrowKeyCheckbox.checked && event.key === "ArrowLeft") {
+  if (goodKeyCheckbox.checked && goodKeys.includes(event.key)) {
     prevCorrectCount = correctCount;
     prevWrongCount = wrongCount;
-
-    wrongButton.click();
+    correctButton.click();
   }
 });
 
@@ -298,3 +288,32 @@ if (isTouchDevice) {
 window.addEventListener("load", initializeVibrationSetting);
 window.addEventListener("load", initializeSoundSetting);
 window.addEventListener("load", initializeDarkModeSetting);
+
+// Function to add and remove the animation class
+function addAndRemoveAnimationClass(button) {
+  button.classList.add("button-animation");
+  setTimeout(() => {
+    button.classList.remove("button-animation");
+  }, 500); // Adjust the time to match your animation duration
+}
+
+document.addEventListener("keydown", function (event) {
+  if (badKeyCheckbox.checked && badKeys.includes(event.key)) {
+    prevCorrectCount = correctCount;
+    prevWrongCount = wrongCount;
+
+    // Trigger animation for wrongButton
+    addAndRemoveAnimationClass(wrongButton);
+
+    wrongButton.click();
+  }
+  if (goodKeyCheckbox.checked && goodKeys.includes(event.key)) {
+    prevCorrectCount = correctCount;
+    prevWrongCount = wrongCount;
+
+    // Trigger animation for correctButton
+    addAndRemoveAnimationClass(correctButton);
+
+    correctButton.click();
+  }
+});

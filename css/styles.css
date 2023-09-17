@@ -451,3 +451,31 @@ body.dark-mode {
     scale: 0.8;
   }
 }
+
+.button-animation {
+  animation: keyPressAnimation 0.8s ease-in-out; /* Adjust the duration and timing function as needed */
+}
+
+@keyframes keyPressAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(-2deg);
+  }
+  20% {
+    transform: rotate(2deg);
+  }
+  30% {
+    transform: rotate(-1deg);
+  }
+  40% {
+    transform: rotate(1deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
