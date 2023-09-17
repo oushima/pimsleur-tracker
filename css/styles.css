@@ -50,6 +50,7 @@ body {
 }
 
 .btn {
+  user-select: none;
   transition: ease-in-out 0.15s;
   font-size: 18px;
   padding: 10px;
