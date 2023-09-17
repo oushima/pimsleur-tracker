@@ -7,7 +7,7 @@ let darkModeEnabled = true;
 const isTouchDevice = "ontouchstart" in window; // Check if the device supports touch events
 let correctButtonCooldown = false;
 let wrongButtonCooldown = false;
-const cooldownTime = 1000; // 500 milliseconds
+const cooldownTime = 1000; // In milliseconds.
 
 const correctButton = document.getElementById("correctButton");
 const wrongButton = document.getElementById("wrongButton");
