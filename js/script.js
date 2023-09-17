@@ -1,8 +1,8 @@
 let correctCount = 0;
 let wrongCount = 0;
 let actionStack = []; // To store our actions
-let vibrationEnabled = true;
-let soundEnabled = true;
+let vibrationEnabled;
+let soundEnabled;
 
 const correctButton = document.getElementById("correctButton");
 const wrongButton = document.getElementById("wrongButton");
@@ -234,3 +234,8 @@ document
   .addEventListener("change", function () {
     vibrationEnabled = this.checked;
   });
+
+// Listen for changes to the sound toggle checkbox
+document.getElementById("soundToggle").addEventListener("change", function () {
+  vibrationEnabled = this.checked;
+});
