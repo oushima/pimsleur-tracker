@@ -55,7 +55,7 @@ body {
   font-size: 18px;
   padding: 10px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
   /* transition: background-color 0.3s; */
   min-width: 150px;
@@ -98,15 +98,21 @@ body {
   margin-top: 48px;
   height: 120px;
   width: 120px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 #wrongButton {
-  background-color: var(--wrong-color);
+  background: radial-gradient(circle, var(--wrong-color), #ff8a50);
   color: var(--text-color);
 }
 
 #correctButton {
-  background-color: var(--correct-color);
+  background: radial-gradient(circle, var(--correct-color), #80e27e);
+  color: var(--text-color);
+}
+
+#resetButton {
+  background-color: var(--reset-color);
   color: var(--text-color);
 }
 
@@ -338,21 +344,6 @@ body.dark-mode {
 
 .dark-mode {
   background-color: #2c2f33;
-}
-
-.dark-mode #correctButton {
-  background-color: var(--correct-color);
-  color: var(--text-color);
-}
-
-.dark-mode #wrongButton {
-  background-color: var(--wrong-color);
-  color: var(--text-color);
-}
-
-.dark-mode #resetButton {
-  background-color: var(--reset-color);
-  color: var(--text-color);
 }
 
 /* Dark Mode Success, Warning, and Exact classes */
