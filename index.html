@@ -29,13 +29,38 @@
           </p>
         </div>
 
-        <!-- Rest of the content -->
+        <!-- Main content. -->
         <div class="center-content">
           <div class="row">
             <button class="btn" id="revertButton">↩ Undo</button>
             <button class="btn" id="resetButton">♻ Done</button>
           </div>
+
+          <!-- Table. -->
           <div class="line"></div>
+          <div class="table-results-container" id="rowContainer">
+            <!-- Example rows -->
+            <div class="table-results demo-row">
+              <div class="good">Good:</div>
+              <div>12:34:56</div>
+            </div>
+            <div class="table-results demo-row">
+              <div class="bad">Bad:</div>
+              <div>12:33:44</div>
+            </div>
+            <div class="table-results demo-row">
+              <div class="good">Good:</div>
+              <div>12:34:56</div>
+            </div>
+            <div class="table-results demo-row">
+              <div class="bad">Bad:</div>
+              <div>12:33:44</div>
+            </div>
+          </div>
+          <button id="filterButton" class="filter-button btn">🧹 Filter</button>
+          <div class="line"></div>
+          <!-- End table. -->
+
           <div class="row">
             <div class="wrong-container">
               <p class="result">

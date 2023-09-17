@@ -294,6 +294,7 @@ function initializeDarkModeSetting() {
 
 // Common logic for correct actions
 function performCorrectAction() {
+  console.log(123);
   if (correctButtonCooldown) return;
   correctButtonCooldown = true;
   setTimeout(() => {
@@ -348,9 +349,15 @@ if (isTouchDevice) {
     performWrongAction();
   });
 } else {
-  // For non-touch devices
-  correctButton.addEventListener("click", performCorrectAction);
-  wrongButton.addEventListener("click", performWrongAction);
+  correctButton.addEventListener("click", function () {
+    performCorrectAction();
+    removeDemoRows();
+  });
+
+  wrongButton.addEventListener("click", function () {
+    performWrongAction();
+    removeDemoRows();
+  });
 }
 
 window.addEventListener("load", initializeVibrationSetting);
@@ -373,4 +380,71 @@ negativeSound.addEventListener("ended", function () {
 positiveSound.addEventListener("ended", function () {
   audioElement.pause();
   audioElement.currentTime = 0;
+});
+
+// Table.
+// ...
+
+document.addEventListener("DOMContentLoaded", function () {
+  const rowContainer = document.getElementById("rowContainer");
+  const filterButton = document.getElementById("filterButton");
+  const correctButton = document.getElementById("correctButton");
+  const wrongButton = document.getElementById("wrongButton");
+
+  let filterMode = "all"; // all, good, bad
+
+  function removeDemoRows() {
+    const demoRows = document.querySelectorAll(".demo-row");
+    demoRows.forEach((row) => row.remove());
+  }
+
+  function addRow(type) {
+    removeDemoRows(); // Remove demo rows
+
+    const row = document.createElement("div");
+    row.className = `table-results ${type}`;
+
+    const typeCol = document.createElement("div");
+    typeCol.innerText = type.charAt(0).toUpperCase() + type.slice(1) + ":";
+
+    const timeCol = document.createElement("div");
+    const currentTime = new Date();
+    const formattedTime =
+      currentTime.getHours().toString().padStart(2, "0") +
+      ":" +
+      currentTime.getMinutes().toString().padStart(2, "0") +
+      ":" +
+      currentTime.getSeconds().toString().padStart(2, "0");
+    timeCol.innerText = formattedTime;
+
+    row.appendChild(typeCol);
+    row.appendChild(timeCol);
+    rowContainer.insertBefore(row, rowContainer.firstChild); // Insert at the top
+
+    applyFilter();
+  }
+
+  function applyFilter() {
+    const rows = Array.from(
+      rowContainer.getElementsByClassName("table-results")
+    );
+    rows.forEach((row) => {
+      if (filterMode === "all") {
+        row.style.display = "flex";
+      } else {
+        row.style.display = row.classList.contains(filterMode)
+          ? "flex"
+          : "none";
+      }
+    });
+  }
+
+  correctButton.addEventListener("click", () => addRow("good"));
+  wrongButton.addEventListener("click", () => addRow("bad"));
+
+  filterButton.addEventListener("click", () => {
+    filterMode =
+      filterMode === "all" ? "good" : filterMode === "good" ? "bad" : "all";
+    applyFilter();
+  });
 });
