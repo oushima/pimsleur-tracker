@@ -65,7 +65,6 @@ body {
   height: 100vh;
   background-color: #f4f4f4;
   margin: 0px;
-  overflow-y: hidden;
 }
 
 .main-container {
@@ -170,7 +169,6 @@ body {
 
 .result {
   text-align: center;
-  margin-top: 20px;
   border: solid 2px #f9f9f9;
   padding: 12px;
 }
@@ -350,11 +348,14 @@ body {
   margin-bottom: 20px;
 }
 
-hr {
+.line {
   align-self: flex-start; /* Align to the start of the cross axis (horizontal in this case) */
   width: 100%;
-  color: #f4f4f4;
   margin: auto;
+  height: 1px;
+  background-color: #f4f4f4;
+  border-radius: 99%;
+  height: 2px;
 }
 
 .modalButtons {
@@ -377,7 +378,7 @@ body.dark-mode {
 }
 
 .dark-mode .settings-content-container .expanded {
-  padding: 0px 48px;
+  padding: 0px;
   background-color: var(--dark-color-3);
 }
 
@@ -435,8 +436,9 @@ body.dark-mode {
   background-color: var(--nitro-color-dark);
 }
 
-.dark-mode hr {
-  color: var(--dark-color-3);
+.dark-mode .line {
+  background-color: var(--dark-color-1);
+  height: 4px;
 }
 
 .dark-mode .result {
