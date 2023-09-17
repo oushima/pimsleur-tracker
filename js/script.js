@@ -1,5 +1,8 @@
 // DISABLE IN DEVELOPMENT.
 console.error = function () {};
+window.onerror = function () {
+  return true;
+};
 
 let correctCount = 0;
 let wrongCount = 0;
