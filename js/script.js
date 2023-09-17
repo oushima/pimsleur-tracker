@@ -403,11 +403,20 @@ function addRow(type) {
   const row = document.createElement("div");
   row.className = `table-results ${type}`;
 
-  const typeCol = document.createElement("div");
+  const typeCol = document.createElement("p");
   // Bad: Good:
-  typeCol.innerText = type.charAt(0).toUpperCase() + type.slice(1);
+  const badIcon = "✗";
+  const goodIcon = "✓";
+  let iconType = "";
+  if (type === "good") {
+    iconType = goodIcon;
+  }
 
-  const timeCol = document.createElement("div");
+  typeCol.innerText =
+    iconType + " " + type.charAt(0).toUpperCase() + type.slice(1);
+  typeCol.classList.add("table-results-type");
+
+  const timeCol = document.createElement("p");
   const currentTime = new Date();
   const formattedTime =
     currentTime.getHours().toString().padStart(2, "0") +
@@ -416,6 +425,7 @@ function addRow(type) {
     ":" +
     currentTime.getSeconds().toString().padStart(2, "0");
   timeCol.innerText = formattedTime;
+  timeCol.classList.add("table-results-time");
 
   row.appendChild(typeCol);
   row.appendChild(timeCol);
