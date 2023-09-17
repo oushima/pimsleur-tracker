@@ -282,6 +282,13 @@ hr {
   margin: auto;
 }
 
+.modalButtons {
+  display: flex;
+  flex-direction: row;
+  scale: 0.8;
+  justify-content: center;
+}
+
 /* Mobile styles */
 @media only screen and (max-width: 768px) {
   .main-container {
