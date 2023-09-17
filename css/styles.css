@@ -65,11 +65,15 @@ body {
 #correctButton {
   background-color: var(--correct-color);
   color: var(--text-color);
+  height: 120px;
+  width: 120px;
 }
 
 #wrongButton {
   background-color: var(--wrong-color);
   color: var(--text-color);
+  height: 120px;
+  width: 120px;
 }
 
 #resetButton {

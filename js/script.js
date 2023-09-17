@@ -1,6 +1,7 @@
 let correctCount = 0;
 let wrongCount = 0;
 let actionStack = []; // To store our actions
+let vibrationEnabled = true;
 
 const correctButton = document.getElementById("correctButton");
 const wrongButton = document.getElementById("wrongButton");
@@ -89,12 +90,18 @@ function updateColor() {
 }
 
 correctButton.addEventListener("click", function () {
+  if (vibrationEnabled) {
+    navigator.vibrate([50, 30, 50]);
+  }
   actionStack.push("correct"); // store the action
   correctCount++;
   updateCounts();
 });
 
 wrongButton.addEventListener("click", function () {
+  if (vibrationEnabled) {
+    navigator.vibrate([100, 50, 100]);
+  }
   actionStack.push("wrong"); // store the action
   wrongCount++;
   updateCounts();
@@ -208,3 +215,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
   });
 });
+
+// Listen for changes to the vibration toggle checkbox
+document
+  .getElementById("vibrationToggle")
+  .addEventListener("change", function () {
+    vibrationEnabled = this.checked;
+  });

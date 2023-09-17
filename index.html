@@ -38,21 +38,21 @@
           <hr />
           <div class="row">
             <div class="wrong-container">
-              <button class="btn" id="wrongButton">✗ Bad</button>
               <p class="result">
                 Bad: <span id="wrongCount">0</span> (<span id="wrongPercentage"
                   >0%</span
                 >)
               </p>
+              <button class="btn" id="wrongButton">✗ Bad</button>
             </div>
             <div class="correct-container">
-              <button class="btn" id="correctButton">✓ Good</button>
               <p class="result">
                 Good: <span id="correctCount">0</span> (<span
                   id="correctPercentage"
                   >0%</span
                 >)
               </p>
+              <button class="btn" id="correctButton">✓ Good</button>
             </div>
           </div>
         </div>
@@ -71,6 +71,14 @@
                   <input type="checkbox" id="darkModeToggle" />
                   <span class="checkmark"></span>
                   Toggle Dark Mode
+                </label>
+              </div>
+
+              <div class="checkbox-container">
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="vibrationToggle" checked="true" />
+                  <span class="checkmark"></span>
+                  Enable Vibration
                 </label>
               </div>
 
