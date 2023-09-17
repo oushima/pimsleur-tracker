@@ -70,7 +70,7 @@
                 <label class="custom-checkbox">
                   <input type="checkbox" id="darkModeToggle" checked="true" />
                   <span class="checkmark"></span>
-                  Toggle Dark Mode
+                  🔦 Toggle Dark Mode
                 </label>
               </div>
 
@@ -78,21 +78,13 @@
                 <label class="custom-checkbox">
                   <input type="checkbox" id="soundToggle" checked="false" />
                   <span class="checkmark"></span>
-                  Enable Sound
+                  🔊 Enable Sound
                 </label>
               </div>
 
               <div class="checkbox-container">
                 <label class="custom-checkbox">
-                  <input type="checkbox" id="vibrationToggle" />
-                  <span class="checkmark"></span>
-                  Enable Vibration (unsupported by iOS)
-                </label>
-              </div>
-
-              <div class="checkbox-container">
-                <label class="custom-checkbox">
-                  <input type="checkbox" id="goodKeyCheckbox" checked="true" />
+                  <input type="checkbox" id="goodGKeyCheckbox" checked="true" />
                   <span class="checkmark"></span>
                   Enable 'G' for Good
                 </label>
@@ -101,7 +93,7 @@
                 <label class="custom-checkbox">
                   <input
                     type="checkbox"
-                    id="goodArrowKeyCheckbox"
+                    id="goodRightArrowKeyCheckbox"
                     checked="true"
                   />
                   <span class="checkmark"></span>
@@ -111,7 +103,7 @@
 
               <div class="checkbox-container">
                 <label class="custom-checkbox">
-                  <input type="checkbox" id="badKeyCheckbox" checked="true" />
+                  <input type="checkbox" id="badGKeyCheckbox" checked="true" />
                   <span class="checkmark"></span>
                   Enable 'B' for Bad
                 </label>
@@ -128,6 +120,73 @@
                   Enable 'Left Arrow' for Bad
                 </label>
               </div>
+
+              <div class="checkbox-container">
+                <label class="custom-checkbox">
+                  <input
+                    type="checkbox"
+                    id="goodEnterKeyCheckbox"
+                    checked="true"
+                  />
+                  <span class="checkmark"></span>
+                  Enable 'Enter' for Good
+                </label>
+              </div>
+              <div class="checkbox-container">
+                <label class="custom-checkbox">
+                  <input
+                    type="checkbox"
+                    id="goodPeriodKeyCheckbox"
+                    checked="true"
+                  />
+                  <span class="checkmark"></span>
+                  Enable '.' for Good
+                </label>
+              </div>
+              <div class="checkbox-container">
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="goodYKeyCheckbox" checked="true" />
+                  <span class="checkmark"></span>
+                  Enable 'y' for Good
+                </label>
+              </div>
+              <div class="checkbox-container">
+                <label class="custom-checkbox">
+                  <input
+                    type="checkbox"
+                    id="badCommaKeyCheckbox"
+                    checked="true"
+                  />
+                  <span class="checkmark"></span>
+                  Enable ',' for Bad
+                </label>
+              </div>
+              <div class="checkbox-container">
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="badNKeyCheckbox" checked="true" />
+                  <span class="checkmark"></span>
+                  Enable 'n' for Bad
+                </label>
+              </div>
+              <div class="checkbox-container">
+                <label class="custom-checkbox">
+                  <input
+                    type="checkbox"
+                    id="badBackspaceKeyCheckbox"
+                    checked="true"
+                  />
+                  <span class="checkmark"></span>
+                  Enable 'Backspace' for Bad
+                </label>
+              </div>
+              <div class="checkbox-container">
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="vibrationToggle" />
+                  <span class="checkmark"></span>
+                  📳 Enable Vibration (unsupported by iOS)
+                </label>
+              </div>
+              <!-- End of checkboxes. -->
             </div>
           </div>
         </div>
@@ -137,20 +196,13 @@
           <button class="manual-toggle btn">📘 View Manual</button>
           <div class="manual-content" id="manualContent">
             <p>
-              <strong>Dark Mode Toggle:</strong> Enables dark mode to reduce eye
-              strain and improve readability in low-light conditions.
+              <strong>🔦 Dark Mode Toggle:</strong> Enables dark mode to reduce
+              eye strain and improve readability in low-light conditions.
             </p>
 
             <p>
-              <strong>Toggle Sound:</strong> Enable or disable sound feedback
+              <strong>🔊 Toggle Sound:</strong> Enable or disable sound feedback
               for the 'Bad' and 'Good' buttons.
-            </p>
-
-            <p>
-              <strong>Toggle Vibration:</strong> Enable or disable vibration
-              feedback for the 'Bad' and 'Good' buttons. Note: May not be
-              supported on iOS or certain browsers, and may require proper
-              permissions.
             </p>
 
             <p>
@@ -168,6 +220,38 @@
             <p>
               <strong>Left Arrow for Bad:</strong> Press the 'Left Arrow' key to
               mark an answer as bad.
+            </p>
+
+            <!-- Additional Button Instructions -->
+            <p>
+              <strong>'Enter' for Good:</strong> Press the 'Enter' key to mark
+              an answer as good.
+            </p>
+            <p>
+              <strong>'.' for Good:</strong> Press the '.' key to mark an answer
+              as good.
+            </p>
+            <p>
+              <strong>'y' for Good:</strong> Press the 'y' key to mark an answer
+              as good.
+            </p>
+            <p>
+              <strong>',' for Bad:</strong> Press the ',' key to mark an answer
+              as bad.
+            </p>
+            <p>
+              <strong>'n' for Bad:</strong> Press the 'n' key to mark an answer
+              as bad.
+            </p>
+            <p>
+              <strong>'Backspace' for Bad:</strong> Press the 'Backspace' key to
+              mark an answer as bad.
+            </p>
+            <p>
+              <strong>📳 Toggle Vibration:</strong> Enable or disable vibration
+              feedback for the 'Bad' and 'Good' buttons. Note: May not be
+              supported on iOS or certain browsers, and may require proper
+              permissions.
             </p>
           </div>
         </div>

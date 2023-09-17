@@ -19,10 +19,20 @@ const resetButton = document.getElementById("resetButton");
 const correctResultElem = document.querySelector(".correct-container .result");
 const wrongResultElem = document.querySelector(".wrong-container .result");
 
-const goodKeyCheckbox = document.getElementById("goodKeyCheckbox");
-const goodArrowKeyCheckbox = document.getElementById("goodArrowKeyCheckbox");
-const badKeyCheckbox = document.getElementById("badKeyCheckbox");
+const goodGKeyCheckbox = document.getElementById("goodGKeyCheckbox");
+const goodRightArrowKeyCheckbox = document.getElementById(
+  "goodRightArrowKeyCheckbox"
+);
+const badGKeyCheckbox = document.getElementById("badGKeyCheckbox");
 const badArrowKeyCheckbox = document.getElementById("badArrowKeyCheckbox");
+const goodEnterKeyCheckbox = document.getElementById("goodEnterKeyCheckbox");
+const goodPeriodKeyCheckbox = document.getElementById("goodPeriodKeyCheckbox");
+const goodYKeyCheckbox = document.getElementById("goodYKeyCheckbox");
+const badCommaKeyCheckbox = document.getElementById("badCommaKeyCheckbox");
+const badNKeyCheckbox = document.getElementById("badNKeyCheckbox");
+const badBackspaceKeyCheckbox = document.getElementById(
+  "badBackspaceKeyCheckbox"
+);
 const revertButton = document.getElementById("revertButton");
 
 const manualToggle = document.querySelector(".manual-toggle");
@@ -128,20 +138,72 @@ revertButton.addEventListener("click", function () {
   updateCounts();
 });
 
-const goodKeys = ["g", "ArrowRight", "Enter", ".", "y"];
-const badKeys = ["b", ",", "ArrowLeft", "n", "Backspace"];
-
 document.addEventListener("keydown", function (event) {
-  if (badKeyCheckbox.checked && badKeys.includes(event.key)) {
+  if (badArrowKeyCheckbox.checked && event.key === "ArrowLeft") {
+    // Add your own logic for arrow keys if needed
     prevCorrectCount = correctCount;
     prevWrongCount = wrongCount;
-
     wrongButton.click();
+    addAndRemoveAnimationClass(wrongButton);
+    return;
   }
-  if (goodKeyCheckbox.checked && goodKeys.includes(event.key)) {
+
+  if (badCommaKeyCheckbox.checked && event.key === ",") {
+    prevCorrectCount = correctCount;
+    prevWrongCount = wrongCount;
+    wrongButton.click();
+    addAndRemoveAnimationClass(wrongButton);
+    return;
+  }
+
+  if (badBackspaceKeyCheckbox.checked && event.key === "Backspace") {
+    prevCorrectCount = correctCount;
+    prevWrongCount = wrongCount;
+    wrongButton.click();
+    addAndRemoveAnimationClass(wrongButton);
+    return;
+  }
+
+  if (badNKeyCheckbox.checked && event.key === "n") {
+    prevCorrectCount = correctCount;
+    prevWrongCount = wrongCount;
+    wrongButton.click();
+    addAndRemoveAnimationClass(wrongButton);
+
+    return;
+  }
+
+  if (goodRightArrowKeyCheckbox.checked && event.key === "ArrowRight") {
+    // Add your own logic for arrow keys if needed
     prevCorrectCount = correctCount;
     prevWrongCount = wrongCount;
     correctButton.click();
+    addAndRemoveAnimationClass(correctButton);
+    return;
+  }
+
+  if (goodEnterKeyCheckbox.checked && event.key === "Enter") {
+    prevCorrectCount = correctCount;
+    prevWrongCount = wrongCount;
+    correctButton.click();
+    addAndRemoveAnimationClass(correctButton);
+    return;
+  }
+
+  if (goodPeriodKeyCheckbox.checked && event.key === ".") {
+    prevCorrectCount = correctCount;
+    prevWrongCount = wrongCount;
+    correctButton.click();
+    addAndRemoveAnimationClass(correctButton);
+    return;
+  }
+
+  if (goodYKeyCheckbox.checked && event.key === "y") {
+    prevCorrectCount = correctCount;
+    prevWrongCount = wrongCount;
+    correctButton.click();
+    addAndRemoveAnimationClass(correctButton);
+    return;
   }
 });
 
@@ -296,24 +358,3 @@ function addAndRemoveAnimationClass(button) {
     button.classList.remove("button-animation");
   }, 500); // Adjust the time to match your animation duration
 }
-
-document.addEventListener("keydown", function (event) {
-  if (badKeyCheckbox.checked && badKeys.includes(event.key)) {
-    prevCorrectCount = correctCount;
-    prevWrongCount = wrongCount;
-
-    // Trigger animation for wrongButton
-    addAndRemoveAnimationClass(wrongButton);
-
-    wrongButton.click();
-  }
-  if (goodKeyCheckbox.checked && goodKeys.includes(event.key)) {
-    prevCorrectCount = correctCount;
-    prevWrongCount = wrongCount;
-
-    // Trigger animation for correctButton
-    addAndRemoveAnimationClass(correctButton);
-
-    correctButton.click();
-  }
-});
