@@ -1,3 +1,6 @@
+// DISABLE IN DEVELOPMENT.
+console.error = function () {};
+
 let correctCount = 0;
 let wrongCount = 0;
 let actionStack = []; // To store our actions
