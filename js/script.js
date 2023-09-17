@@ -142,7 +142,7 @@ revertButton.addEventListener("click", function () {
   updateCounts();
   removeRow();
   const rows = Array.from(rowContainer.getElementsByClassName("table-results"));
-  if (rows.length === 0) {
+  if (rows.length < 2) {
     filterButton.classList.add("filter-mode-off");
     return;
   }
