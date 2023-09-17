@@ -566,7 +566,7 @@ body.dark-mode {
   }
 
   .table-results-container {
-    width: 75vw;
+    width: 100%;
   }
 }
 
