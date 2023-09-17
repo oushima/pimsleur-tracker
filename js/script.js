@@ -1,8 +1,8 @@
 // DISABLE IN DEVELOPMENT.
-console.error = function () {};
 window.onerror = function () {
   return true;
 };
+console.log = console.info = console.warn = console.error = function () {};
 
 let correctCount = 0;
 let wrongCount = 0;
