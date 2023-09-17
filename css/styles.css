@@ -311,7 +311,7 @@ body.dark-mode {
   color: #ffffff;
 }
 
-.settings-content-container .expanded {
+.dark-mode .settings-content-container .expanded {
   padding: 0px 48px;
   background-color: var(--dark-color-3);
 }
