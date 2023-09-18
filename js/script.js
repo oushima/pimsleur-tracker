@@ -123,7 +123,7 @@ document.getElementById("confirmDone").addEventListener("click", function () {
   actionStack = []; // reset the action stack
   updateCounts();
   removeAllRows();
-  filterButton.classList.add("filter-mode-off");
+  filterButtonReset();
   document.getElementById("confirmationModal").style.display = "none"; // Close the modal
 });
 
@@ -298,6 +298,10 @@ function initializeDarkModeSetting() {
 
 // Common logic for correct actions
 function performCorrectAction() {
+  if (!actionStack.length) {
+    removeAllRows();
+  }
+
   if (correctButtonCooldown) return;
   correctButtonCooldown = true;
   setTimeout(() => {
@@ -317,11 +321,15 @@ function performCorrectAction() {
   correctCount++;
   updateCounts();
   addRow("good");
-  functionFilterButtonInit();
+  filterButtonInit();
 }
 
 // Common logic for wrong actions
 function performWrongAction() {
+  if (!actionStack.length) {
+    removeAllRows();
+  }
+
   if (wrongButtonCooldown) return;
   wrongButtonCooldown = true;
   setTimeout(() => {
@@ -341,7 +349,7 @@ function performWrongAction() {
   wrongCount++;
   updateCounts();
   addRow("bad");
-  functionFilterButtonInit();
+  filterButtonInit();
 }
 
 if (isTouchDevice) {
@@ -404,6 +412,7 @@ function addRow(type) {
   row.className = `table-results ${type}`;
 
   const typeCol = document.createElement("p");
+  const typeSpan = document.createElement("span");
   // Bad: Good:
   const badIcon = "✗";
   const goodIcon = "✓";
@@ -414,26 +423,31 @@ function addRow(type) {
     iconType = badIcon;
   }
 
-  typeCol.innerText =
+  typeSpan.innerText =
     iconType + " " + type.charAt(0).toUpperCase() + type.slice(1);
   typeCol.classList.add("table-results-type");
+  typeSpan.classList.add("table-results-type-name");
+  typeCol.appendChild(typeSpan);
 
   const timeCol = document.createElement("p");
   const currentTime = new Date();
-  const formattedTime =
-    currentTime.getHours().toString().padStart(2, "0") +
-    ":" +
-    currentTime.getMinutes().toString().padStart(2, "0") +
-    ":" +
-    currentTime.getSeconds().toString().padStart(2, "0");
-  timeCol.innerText = formattedTime;
+
+  const minutesSpan = document.createElement("span");
+  minutesSpan.innerText = currentTime.getMinutes().toString() + "m";
+  minutesSpan.classList.add("table-results-time-min");
+
+  const secondsSpan = document.createElement("span");
+  secondsSpan.innerText = currentTime.getSeconds().toString() + "s";
+  secondsSpan.classList.add("table-results-time-sec");
+
+  timeCol.appendChild(minutesSpan);
+  timeCol.appendChild(document.createTextNode(" "));
+  timeCol.appendChild(secondsSpan);
+
   timeCol.classList.add("table-results-time");
 
   row.appendChild(typeCol);
   row.appendChild(timeCol);
-
-  const rows = Array.from(rowContainer.getElementsByClassName("table-results"));
-  rows.forEach((row) => row.classList.add("table-results-old-rows"));
   rowContainer.insertBefore(row, rowContainer.firstChild); // Insert at the top
 
   applyFilter();
@@ -457,6 +471,9 @@ function removeRow() {
 }
 
 function removeAllRows() {
+  const demoRows = document.querySelectorAll(".demo-table-results");
+  demoRows.forEach((row) => row.parentNode.removeChild(row));
+
   const rows = document.querySelectorAll(".table-results");
   rows.forEach((row) => row.parentNode.removeChild(row));
   applyFilter();
@@ -471,6 +488,20 @@ function applyFilter() {
       row.style.display = row.classList.contains(filterMode) ? "flex" : "none";
     }
   });
+
+  // Set old row opacity.
+  let currentRowType = Array.from(
+    rowContainer.getElementsByClassName("table-results " + filterMode)
+  );
+  if (!currentRowType.length) {
+    currentRowType = rows;
+  }
+
+  if (currentRowType.length > 1) {
+    currentRowType
+      .slice(1)
+      .forEach((row) => row.classList.add("table-results-old-rows"));
+  }
 }
 
 filterButton.addEventListener("click", () => {
@@ -481,11 +512,11 @@ filterButton.addEventListener("click", () => {
   } else {
     filterMode = "all";
   }
-  functionFilterButtonInit();
+  filterButtonInit();
   applyFilter();
 });
 
-function functionFilterButtonInit() {
+function filterButtonInit() {
   const rows = Array.from(rowContainer.getElementsByClassName("table-results"));
   if (rows.length === 0) {
     filterButton.classList.add("filter-mode-off");
@@ -511,4 +542,13 @@ function functionFilterButtonInit() {
       break;
     }
   }
+}
+
+function filterButtonReset() {
+  filterButton.classList.remove("filter-mode-off");
+  filterButton.classList.remove("filter-mode-all");
+  filterButton.classList.remove("filter-mode-good");
+  filterButton.classList.remove("filter-mode-bad");
+  filterButton.classList.add("filter-mode-all");
+  filterButton.classList.add("filter-mode-off");
 }
