@@ -624,6 +624,16 @@ body.dark-mode {
   color: var(--text-color);
 }
 
+.dark-mode .filter-mode-bad {
+  background: var(--wrong-color-3);
+  color: var(--text-color);
+}
+
+.dark-mode .filter-mode-good {
+  background: var(--correct-color-3);
+  color: var(--text-color);
+}
+
 .remove-element-animation {
   opacity: 0;
   transition: opacity 0.2s ease-in-out;

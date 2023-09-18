@@ -429,21 +429,18 @@ function addRow(type) {
   typeSpan.classList.add("table-results-type-name");
   typeCol.appendChild(typeSpan);
 
+  // Time.
   const timeCol = document.createElement("p");
   const currentTime = new Date();
-
   const minutesSpan = document.createElement("span");
   minutesSpan.innerText = currentTime.getMinutes().toString() + "m";
   minutesSpan.classList.add("table-results-time-min");
-
   const secondsSpan = document.createElement("span");
   secondsSpan.innerText = currentTime.getSeconds().toString() + "s";
   secondsSpan.classList.add("table-results-time-sec");
-
   timeCol.appendChild(minutesSpan);
   timeCol.appendChild(document.createTextNode(" "));
   timeCol.appendChild(secondsSpan);
-
   timeCol.classList.add("table-results-time");
 
   row.appendChild(typeCol);
