@@ -614,6 +614,11 @@ body.dark-mode {
   border: solid 4px var(--dark-color-1);
 }
 
+.dark-mode .settings-toggle {
+  background-color: var(--dark-color-3);
+  color: var(--text-color);
+}
+
 .filter-mode-all {
   background: radial-gradient(circle at center, #fbc073, #f9d67a);
   color: var(--text-color);
