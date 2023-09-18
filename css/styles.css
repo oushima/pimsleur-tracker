@@ -369,6 +369,12 @@ body {
   display: none;
 }
 
+.table-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .checkmark {
   position: absolute;
   top: 0;
@@ -620,12 +626,11 @@ body.dark-mode {
 
 .table-results-container {
   /* Prevents the page from expanding when content is added. */
-  max-height: 150px;
+  max-height: 170px;
 
   /* Prevents the page from expanding when content is added. */
-  min-height: 150px;
+  min-height: 170px;
 
-  width: 28vh;
   overflow-y: auto;
   position: relative;
   -ms-overflow-style: none; /* Internet Explorer 10+ */
@@ -650,7 +655,7 @@ body.dark-mode {
   animation: slideDown 0.3s ease-out;
   border: none;
   border-radius: 2px;
-  margin: 4px;
+  margin: 8px;
   display: flex;
   justify-content: space-between;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
@@ -703,17 +708,19 @@ body.dark-mode {
 }
 
 .table-results-main-container {
+  min-width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 16px;
   border: solid 4px #f4f4f4;
-  padding: 24px;
+  padding: 12px;
   border-radius: 12px;
 }
 
 .dark-mode .table-results-main-container {
-  border: solid 4px var(--dark-color-1);
+  background: var(--dark-color-3);
+  border: 0px;
 }
 
 .dark-mode .settings-toggle {
@@ -724,6 +731,7 @@ body.dark-mode {
 .filter-mode-all {
   background: radial-gradient(circle at center, #fbc073, #f9d67a);
   color: var(--text-color);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px 0px;
 }
 
 .dark-mode .filter-mode-all {
@@ -804,8 +812,9 @@ body.dark-mode {
   }
 
   .table-results-container {
-    max-height: 145px;
-    min-height: 145px;
+    max-height: 170px;
+    min-height: 170px;
+    width: 100%;
   }
 
   .table-results-main-container {
@@ -824,9 +833,6 @@ body.dark-mode {
     transform: scale(0.8);
   }
 
-  .table-results-container {
-    width: 100%;
-  }
   .options-container {
     margin: 24px 0px;
   }
