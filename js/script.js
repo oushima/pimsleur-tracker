@@ -576,14 +576,16 @@ function setRandomColorBack() {
         if (row.nodeType === 1) {
           // Ensure it's an element node.
           const classListArray = Array.from(row.classList);
-          classListArray.forEach((className) => {
+          if (!classListArray.includes("bad")) {
             row.classList.add(savedColors[i]);
-          });
+          } else {
+            i++;
+          }
         }
       });
     }
   }
-  let = savedColors.length;
+  i = savedColors.length;
 }
 
 filterButton.addEventListener("click", () => {
