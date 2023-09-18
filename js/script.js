@@ -508,9 +508,10 @@ function removeRow() {
     setTimeout(() => {
       rowContainer.removeChild(lastElement);
     }, 400);
+    setTimeout(() => {
+      setOldRows();
+    }, 450);
   }
-
-  applyFilter();
 }
 
 function removeAllRows() {
@@ -548,24 +549,7 @@ function applyFilter() {
       });
     }
   }
-
-  // Set old row opacity.
-  rows
-    .slice(1)
-    .forEach((row) => row.classList.remove("table-results-old-rows")); // Reset first.
-
-  let currentRowType = Array.from(
-    rowContainer.getElementsByClassName("table-results " + filterMode)
-  );
-  if (!currentRowType.length) {
-    currentRowType = rows;
-  }
-
-  if (currentRowType.length > 1) {
-    currentRowType
-      .slice(1)
-      .forEach((row) => row.classList.add("table-results-old-rows"));
-  }
+  setOldRows();
 }
 
 function setRandomColorBack() {
@@ -588,6 +572,31 @@ function setRandomColorBack() {
     }
   }
   i = savedColors.length;
+}
+
+function setOldRows() {
+  const rows = Array.from(rowContainer.getElementsByClassName("table-results"));
+
+  // Remove the classes from all elements
+  rows.forEach((row) => {
+    row.classList.remove("table-results-old-rows", "newest-row", "fade-in");
+  });
+
+  // Apply the "table-results-old-rows" class again, but not to the first element
+  if (rows.length > 1) {
+    rows.slice(1).forEach((row) => {
+      row.classList.add("table-results-old-rows");
+    });
+  }
+
+  // Apply the "newest-row" class to the first element with animation
+  if (rows.length > 0) {
+    rows[0].classList.add("newest-row");
+    // Trigger reflow to reset animation
+    void rows[0].offsetWidth;
+    // Add fade-in class
+    rows[0].classList.add("fade-in");
+  }
 }
 
 filterButton.addEventListener("click", () => {
