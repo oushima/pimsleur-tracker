@@ -430,11 +430,6 @@ body.dark-mode {
   color: #ffffff;
 }
 
-.dark-mode .btn {
-  background-color: var(--dark-color-3);
-  color: #ffffff;
-}
-
 .dark-mode .settings-content-container .expanded {
   padding: 48px;
   background-color: var(--dark-color-3);
@@ -602,6 +597,7 @@ body.dark-mode {
 }
 
 .filter-button {
+  width: 100%;
   margin: auto;
 }
 
@@ -648,7 +644,7 @@ body.dark-mode {
 }
 
 .dark-mode .filter-mode-bad {
-  background: var(--wrong-color-4);
+  background: var(--wrong-color-3);
   color: var(--text-color);
 }
 
