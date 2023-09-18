@@ -635,3 +635,15 @@ function filterButtonReset() {
   filterButton.classList.add("filter-mode-all");
   filterButton.classList.add("filter-mode-off");
 }
+
+const buttons = ["correctButton", "wrongButton"];
+
+buttons.forEach((btnId) => {
+  const areaId = `clickArea${btnId.charAt(0).toUpperCase() + btnId.slice(1)}`;
+  const btn = document.getElementById(btnId);
+  const area = document.getElementById(areaId);
+
+  area.addEventListener("click", () => btn.click());
+  area.addEventListener("mousedown", () => btn.classList.add("active"));
+  area.addEventListener("mouseup", () => btn.classList.remove("active"));
+});
