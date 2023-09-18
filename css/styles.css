@@ -68,6 +68,7 @@ html::-webkit-scrollbar {
   --dark-color-1: #1e2125;
   --dark-color-2: #23272a;
   --dark-color-3: #2e3136;
+  --dark-color-4: #1f1f1f;
   --correct-color-rgb-values: 76, 175, 80;
   --correct-color-2-rgb-values: 168, 230, 207;
   --wrong-color-3-rgb-values: 240, 71, 71;
@@ -236,6 +237,12 @@ body {
   /* Set a fixed width for the buttons. */
   text-align: center;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .btn {
+  background-color: var(--dark-color-4);
+  color: var(--text-color);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .btn.active {
@@ -805,8 +812,8 @@ body.dark-mode {
     bottom: 0;
     cursor: pointer;
     z-index: 1;
-    height: 50vw !important;
-    width: 50vw !important;
+    height: 200px !important;
+    width: 200px !important;
   }
 
   .click-area-correct {
@@ -1474,8 +1481,8 @@ body.dark-mode {
   bottom: 0;
   cursor: pointer;
   z-index: 1;
-  height: 18vw;
-  width: 24vw;
+  height: 176px;
+  width: 225px;
 }
 
 .click-area-correct {
