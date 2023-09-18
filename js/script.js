@@ -10,6 +10,7 @@ let wrongButtonCooldown = false;
 const cooldownTime = 500; // In milliseconds.
 const rowContainer = document.getElementById("rowContainer");
 const filterButton = document.getElementById("filterButton");
+let timestamp;
 
 const correctButton = document.getElementById("correctButton");
 const wrongButton = document.getElementById("wrongButton");
@@ -318,10 +319,17 @@ function performCorrectAction() {
     positiveSound.play();
   }
   actionStack.push("correct");
+  setTimeStamp();
   correctCount++;
   updateCounts();
   addRow("good");
   filterButtonInit();
+}
+
+function setTimeStamp() {
+  if (!timestamp) {
+    timestamp = new Date().getTime();
+  }
 }
 
 // Common logic for wrong actions
@@ -346,6 +354,7 @@ function performWrongAction() {
     negativeSound.play();
   }
   actionStack.push("wrong");
+  setTimeStamp();
   wrongCount++;
   updateCounts();
   addRow("bad");
@@ -432,16 +441,21 @@ function addRow(type) {
   // Time.
   const timeCol = document.createElement("p");
   const currentTime = new Date();
+  const timestampNow = currentTime.getTime();
+  const elapsedTime = timestampNow - timestamp; // 'timestamp' is when the event originally occurred, initialized with 'new Date().getTime();'
+  const elapsedSeconds = Math.floor((elapsedTime / 1000) % 60);
+  const elapsedMinutes = Math.floor((elapsedTime / (1000 * 60)) % 60);
   const minutesSpan = document.createElement("span");
-  minutesSpan.innerText = currentTime.getMinutes().toString() + "m";
+  minutesSpan.innerText = elapsedMinutes.toString() + "m";
   minutesSpan.classList.add("table-results-time-min");
   const secondsSpan = document.createElement("span");
-  secondsSpan.innerText = currentTime.getSeconds().toString() + "s";
+  secondsSpan.innerText = elapsedSeconds.toString() + "s";
   secondsSpan.classList.add("table-results-time-sec");
   timeCol.appendChild(minutesSpan);
   timeCol.appendChild(document.createTextNode(" "));
   timeCol.appendChild(secondsSpan);
   timeCol.classList.add("table-results-time");
+  console.log(timestamp);
 
   row.appendChild(typeCol);
   row.appendChild(timeCol);
