@@ -508,7 +508,6 @@ function applyFilter() {
   let currentRowType = Array.from(
     rowContainer.getElementsByClassName("table-results " + filterMode)
   );
-  console.log(currentRowType);
   if (!currentRowType.length) {
     currentRowType = rows;
   }
