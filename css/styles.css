@@ -597,7 +597,13 @@ body.dark-mode {
 }
 
 .filter-mode-all {
+  background: radial-gradient(circle at center, #fbc073, #f9d67a);
+  color: var(--text-color);
+}
+
+.dark-mode .filter-mode-all {
   background: radial-gradient(circle at center, #faa61a, #d08800);
+  color: var(--text-color);
 }
 
 .filter-mode-off,
@@ -605,14 +611,17 @@ body.dark-mode {
   background: radial-gradient(circle at center, #faa61a, #d08800);
   opacity: 0.5;
   cursor: not-allowed;
+  color: white;
 }
 
 .filter-mode-bad {
-  background: var(--wrong-color-3) !important;
+  background: var(--wrong-color-2);
+  color: var(--text-color);
 }
 
 .filter-mode-good {
-  background: var(--correct-color-3) !important;
+  background: var(--correct-color-2);
+  color: var(--text-color);
 }
 
 .remove-element-animation {
