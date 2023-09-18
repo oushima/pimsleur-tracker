@@ -455,7 +455,6 @@ function addRow(type) {
   timeCol.appendChild(document.createTextNode(" "));
   timeCol.appendChild(secondsSpan);
   timeCol.classList.add("table-results-time");
-  console.log(timestamp);
 
   row.appendChild(typeCol);
   row.appendChild(timeCol);
