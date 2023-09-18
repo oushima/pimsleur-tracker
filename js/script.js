@@ -1,8 +1,6 @@
 let correctCount = 0;
 let wrongCount = 0;
 let actionStack = []; // To store our actions
-let vibrationEnabled = false;
-let soundEnabled = false;
 let darkModeEnabled = true;
 const isTouchDevice = "ontouchstart" in window; // Check if the device supports touch events
 let correctButtonCooldown = false;
@@ -12,6 +10,14 @@ const rowContainer = document.getElementById("rowContainer");
 const filterButton = document.getElementById("filterButton");
 let timestamp;
 let savedColors = [];
+const isMobile =
+  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  );
+const isAndroid = /Android/i.test(navigator.userAgent);
+
+soundEnabled = !isMobile;
+let vibrationEnabled = isAndroid;
 
 const correctButton = document.getElementById("correctButton");
 const wrongButton = document.getElementById("wrongButton");
@@ -48,6 +54,7 @@ const negativeSound = document.getElementById("negativeSound");
 
 let prevCorrectCount = 0;
 let prevWrongCount = 0;
+soundToggle.checked = soundEnabled;
 
 document.addEventListener(
   "touchstart",
