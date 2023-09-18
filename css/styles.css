@@ -725,7 +725,7 @@ body.dark-mode {
 
 .dark-mode .settings-toggle {
   background-color: var(--dark-color-3);
-  color: var(--text-color);
+  color: var(--nitro-color-dark);
 }
 
 .filter-mode-all {
