@@ -501,9 +501,14 @@ function applyFilter() {
   });
 
   // Set old row opacity.
+  rows
+    .slice(1)
+    .forEach((row) => row.classList.remove("table-results-old-rows")); // Reset first.
+
   let currentRowType = Array.from(
     rowContainer.getElementsByClassName("table-results " + filterMode)
   );
+  console.log(currentRowType);
   if (!currentRowType.length) {
     currentRowType = rows;
   }
