@@ -690,11 +690,20 @@ body.dark-mode {
 @media only screen and (max-width: 768px) {
   .table-results,
   .demo-table-results {
-    font-size: 12px;
+    font-size: 16px;
   }
 
+  .demo-table-results-time,
+  .demo-table-results-type {
+    margin: 16px;
+  }
   .container {
-    height: 740px;
+    height: 730px;
+  }
+
+  .table-results-container {
+    max-height: 115px;
+    min-height: 115px;
   }
 
   .table-results-main-container {
