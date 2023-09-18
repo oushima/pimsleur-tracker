@@ -56,6 +56,7 @@ html::-webkit-scrollbar {
   --correct-color-2: #a8e6cf;
   --wrong-color-3: #f04747; /* Discord Red */
   --correct-color-3: #4b8e79; /* Discord Green */
+  --correct-color-4: #3fa67b; /* Discord Green */
   --wrong-color: #ff5722;
   --wrong-color-2: #ffadad;
   --reset-color: #3f51b5;
@@ -95,8 +96,12 @@ body {
 .main-container {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  margin: 24px;
+  margin: auto;
+  justify-content: center;
+}
+
+.container {
+  margin-top: 24px !important;
 }
 
 .container,
@@ -312,7 +317,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 56px;
-  margin: 56px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -361,7 +365,10 @@ body {
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.7);
   z-index: 1000;
   justify-content: center;
@@ -559,27 +566,28 @@ body.dark-mode {
   color: white;
 }
 
-.dark-mode .table-results.good {
-  background-color: var(--correct-color-3);
+.dark-mode .demo-table-results.demo-good {
+  background-color: var(--correct-color-4);
 }
 
-.demo-table-results.demo-good {
-  background-color: #8db68d;
+.dark-mode .demo-table-results.demo-bad {
+  background-color: var(--wrong-color-3);
+}
+
+.demo-table-results.demo-good,
+.dark-mode .demo-table-results.demo-bad {
+  filter: brightness(0.6);
+}
+
+.dark-mode .table-results.good {
+  background-color: var(--correct-color-4);
 }
 
 .table-results.bad,
 .demo-table-results.demo-bad {
   flex: 1;
-  background-color: var(--wrong-color-2);
-  color: white;
-}
-
-.dark-mode .table-results.bad {
   background-color: var(--wrong-color-3);
-}
-
-.dark-mode .demo-table-results.demo-bad {
-  background-color: #b78b8b;
+  color: white;
 }
 
 @keyframes slideDown {
@@ -590,18 +598,6 @@ body.dark-mode {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-/* Mobile styles */
-@media only screen and (max-width: 768px) {
-  .table-results,
-  .demo-table-results {
-    font-size: 12px;
-  }
-
-  .table-results-container {
-    width: 100%;
   }
 }
 
@@ -688,4 +684,47 @@ body.dark-mode {
 .demo-table-results-time,
 .table-results-time {
   margin: 24px;
+}
+
+/* Mobile styles */
+@media only screen and (max-width: 768px) {
+  .table-results,
+  .demo-table-results {
+    font-size: 12px;
+  }
+
+  .container {
+    height: 740px;
+  }
+
+  .table-results-main-container {
+    width: 75vw;
+  }
+
+  .logo {
+    margin-bottom: -48px;
+  }
+
+  .main-container {
+    width: 99vw;
+  }
+
+  .center-content {
+    transform: scale(0.8);
+  }
+
+  .table-results-container {
+    width: 100%;
+  }
+  .options-container {
+    margin: 24px 0px;
+  }
+  .settings-content.expanded {
+    padding: 0px 24px !important;
+    font-size: 12px;
+  }
+
+  .manual-content {
+    font-size: 12px;
+  }
 }
