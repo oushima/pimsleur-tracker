@@ -11,6 +11,7 @@ const cooldownTime = 500; // In milliseconds.
 const rowContainer = document.getElementById("rowContainer");
 const filterButton = document.getElementById("filterButton");
 let timestamp;
+let savedColors = [];
 
 const correctButton = document.getElementById("correctButton");
 const wrongButton = document.getElementById("wrongButton");
@@ -309,6 +310,10 @@ function performCorrectAction() {
     correctButtonCooldown = false;
   }, cooldownTime);
 
+  if (filterMode === "bad") {
+    filterButton.click();
+  }
+
   if (vibrationEnabled) {
     navigator.vibrate([50, 30, 50]);
   }
@@ -326,12 +331,6 @@ function performCorrectAction() {
   filterButtonInit();
 }
 
-function setTimeStamp() {
-  if (!timestamp) {
-    timestamp = new Date().getTime();
-  }
-}
-
 // Common logic for wrong actions
 function performWrongAction() {
   if (!actionStack.length) {
@@ -343,6 +342,11 @@ function performWrongAction() {
   setTimeout(() => {
     wrongButtonCooldown = false;
   }, cooldownTime);
+
+  if (filterMode === "good") {
+    filterButton.click();
+    filterButton.click();
+  }
 
   if (vibrationEnabled) {
     navigator.vibrate([100, 50, 100]);
@@ -359,6 +363,12 @@ function performWrongAction() {
   updateCounts();
   addRow("bad");
   filterButtonInit();
+}
+
+function setTimeStamp() {
+  if (!timestamp) {
+    timestamp = new Date().getTime();
+  }
 }
 
 let numbers = [];
@@ -434,9 +444,10 @@ function addRow(type) {
 
   const row = document.createElement("div");
   let myClassName = `table-results ${type}`;
-  if (type === "good") {
+  if (type === "good" && filterMode === "all") {
     const randomNumber = getRandomNumber();
     myClassName += ` discord-bg-color-${randomNumber}`;
+    savedColors.push(`discord-bg-color-${randomNumber}`);
   }
   row.className = myClassName;
 
@@ -519,6 +530,23 @@ function applyFilter() {
     }
   });
 
+  if (filterMode === "good") {
+    const rows = document.getElementById("rowContainer").childNodes;
+    if (rows.length) {
+      rows.forEach((row) => {
+        if (row.nodeType === 1) {
+          // Ensure it's an element node.
+          const classListArray = Array.from(row.classList);
+          classListArray.forEach((className) => {
+            if (className.match(/^discord-bg-color-.+/)) {
+              row.classList.remove(className);
+            }
+          });
+        }
+      });
+    }
+  }
+
   // Set old row opacity.
   rows
     .slice(1)
@@ -538,6 +566,26 @@ function applyFilter() {
   }
 }
 
+function setRandomColorBack() {
+  if (filterMode === "all" && savedColors.length) {
+    let i = savedColors.length;
+    const rows = document.getElementById("rowContainer").childNodes;
+    if (rows.length) {
+      rows.forEach((row) => {
+        i--;
+        if (row.nodeType === 1) {
+          // Ensure it's an element node.
+          const classListArray = Array.from(row.classList);
+          classListArray.forEach((className) => {
+            row.classList.add(savedColors[i]);
+          });
+        }
+      });
+    }
+  }
+  let = savedColors.length;
+}
+
 filterButton.addEventListener("click", () => {
   if (filterMode === "all") {
     filterMode = "good";
@@ -546,6 +594,7 @@ filterButton.addEventListener("click", () => {
   } else {
     filterMode = "all";
   }
+  setRandomColorBack();
   filterButtonInit();
   applyFilter();
 });
