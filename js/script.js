@@ -135,6 +135,8 @@ document.getElementById("cancelDone").addEventListener("click", function () {
 });
 
 revertButton.addEventListener("click", function () {
+  filterMode = "all";
+  filterButtonInit();
   const lastAction = actionStack.pop(); // get the last action
   if (lastAction === "correct") {
     correctCount--;
