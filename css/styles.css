@@ -797,7 +797,8 @@ body.dark-mode {
   display: inline-block;
 }
 
-.table-results-type-name {
+.table-results-type-name,
+.demo-table-results-type-name {
   width: 60px !important;
   text-align: center;
 }
