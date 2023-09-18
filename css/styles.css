@@ -649,12 +649,12 @@ body.dark-mode {
 }
 
 .dark-mode .filter-mode-bad {
-  background: var(--wrong-color-3);
+  background: var(--wrong-color-4);
   color: var(--text-color);
 }
 
 .dark-mode .filter-mode-good {
-  background: var(--correct-color-3);
+  background: var(--correct-color-4);
   color: var(--text-color);
 }
 
