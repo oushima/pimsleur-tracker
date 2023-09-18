@@ -639,11 +639,42 @@ function filterButtonReset() {
 const buttons = ["correctButton", "wrongButton"];
 
 buttons.forEach((btnId) => {
+  let correctAction = performWrongAction;
+  if (btnId === "correctButton") {
+    correctAction = performCorrectAction;
+  }
   const areaId = `clickArea${btnId.charAt(0).toUpperCase() + btnId.slice(1)}`;
   const btn = document.getElementById(btnId);
   const area = document.getElementById(areaId);
 
+  // Function to handle capture for both mouse and touch events
+  function handleCapture(event) {
+    area.setPointerCapture(event.pointerId);
+  }
+
+  // Function to handle release for both mouse and touch events
+  function handleRelease(event) {
+    area.releasePointerCapture(event.pointerId);
+  }
+
+  // Desktop events
   area.addEventListener("click", () => btn.click());
-  area.addEventListener("mousedown", () => btn.classList.add("active"));
-  area.addEventListener("mouseup", () => btn.classList.remove("active"));
+  area.addEventListener("pointerdown", (event) => {
+    handleCapture(event);
+    btn.classList.add("active");
+  });
+  area.addEventListener("pointerup", (event) => {
+    handleRelease(event);
+    btn.classList.remove("active");
+  });
+
+  // Mobile touch events
+  area.addEventListener("touchstart", (event) => {
+    btn.classList.add("active");
+    correctAction();
+  });
+  area.addEventListener("touchend", () => {
+    btn.classList.remove("active");
+    correctAction();
+  });
 });
