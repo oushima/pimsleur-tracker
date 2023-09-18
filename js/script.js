@@ -361,6 +361,21 @@ function performWrongAction() {
   filterButtonInit();
 }
 
+let numbers = [];
+
+function getRandomNumber() {
+  if (numbers.length === 0) {
+    for (let i = 1; i <= 99; i++) {
+      numbers.push(i);
+    }
+  }
+
+  const randomIndex = Math.floor(Math.random() * numbers.length);
+  const randomNum = numbers.splice(randomIndex, 1)[0];
+
+  return randomNum;
+}
+
 if (isTouchDevice) {
   // For touch devices
   correctButton.addEventListener("touchstart", function (event) {
@@ -418,7 +433,12 @@ function addRow(type) {
   removeDemoRows(); // Remove demo rows
 
   const row = document.createElement("div");
-  row.className = `table-results ${type}`;
+  let myClassName = `table-results ${type}`;
+  if (type === "good") {
+    const randomNumber = getRandomNumber();
+    myClassName += ` discord-bg-color-${randomNumber}`;
+  }
+  row.className = myClassName;
 
   const typeCol = document.createElement("p");
   const typeSpan = document.createElement("span");

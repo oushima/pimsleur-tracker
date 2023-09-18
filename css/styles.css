@@ -83,6 +83,107 @@ html::-webkit-scrollbar {
   --dark-color-1-rgb-values: 30, 33, 37;
   --dark-color-2-rgb-values: 35, 39, 42;
   --dark-color-3-rgb-values: 46, 49, 54;
+
+  /* More colors. */
+  --discord-color-1: #8a2be2;
+  --discord-color-2: #f4a261;
+  --discord-color-3: #2a9d8f;
+  --discord-color-4: #483d8b;
+  --discord-color-5: #8ac6d0;
+  --discord-color-6: #42a5b3;
+  --discord-color-7: #9055a2;
+  --discord-color-8: #ffabab;
+  --discord-color-9: #00ead3;
+  --discord-color-10: #7fb069;
+  --discord-color-11: #b8a9c9;
+  --discord-color-12: #dda0dd;
+  --discord-color-13: #84a59d;
+  --discord-color-14: #ecdbd9;
+  --discord-color-15: #808000;
+  --discord-color-16: #ba55d3;
+  --discord-color-17: #6d597a;
+  --discord-color-18: #9d8df1;
+  --discord-color-19: #5a189a;
+  --discord-color-20: #ab83a1;
+  --discord-color-21: #9ac2c5;
+  --discord-color-22: #98ddca;
+  --discord-color-23: #dda0dd;
+  --discord-color-24: #f0a500;
+  --discord-color-25: #f18805;
+  --discord-color-26: #6a057f;
+  --discord-color-27: #acecd5;
+  --discord-color-28: #6ee7b7;
+  --discord-color-29: #dda0dd;
+  --discord-color-30: #3fa7d6;
+  --discord-color-31: #20b2aa;
+  --discord-color-32: #d157a0;
+  --discord-color-33: #d4a5a5;
+  --discord-color-34: #392f5a;
+  --discord-color-35: #dda0dd;
+  --discord-color-36: #ab83a1;
+  --discord-color-37: #dda0dd;
+  --discord-color-38: #ffe156;
+  --discord-color-39: #247ba0;
+  --discord-color-40: #50514f;
+  --discord-color-41: #f4e76e;
+  --discord-color-42: #247ba0;
+  --discord-color-43: #70c1b3;
+  --discord-color-44: #b2dbbf;
+  --discord-color-45: #f3ffbd;
+  --discord-color-46: #dda0dd;
+  --discord-color-47: #acd8aa;
+  --discord-color-48: #6a057f;
+  --discord-color-49: #dda0dd;
+  --discord-color-50: #f9c80e;
+  --discord-color-51: #dda0dd;
+  --discord-color-52: #dda0dd;
+  --discord-color-53: #662e9b;
+  --discord-color-54: #43bccd;
+  --discord-color-55: #5c2751;
+  --discord-color-56: #6457a6;
+  --discord-color-57: #dda0dd;
+  --discord-color-58: #dda0dd;
+  --discord-color-59: #50514f;
+  --discord-color-60: #483d8b;
+  --discord-color-61: #8ac6d0;
+  --discord-color-62: #42a5b3;
+  --discord-color-63: #9055a2;
+  --discord-color-64: #ffabab;
+  --discord-color-65: #00ead3;
+  --discord-color-66: #7fb069;
+  --discord-color-67: #b8a9c9;
+  --discord-color-68: #dda0dd;
+  --discord-color-69: #84a59d;
+  --discord-color-70: #ecdbd9;
+  --discord-color-71: #808000;
+  --discord-color-72: #ba55d3;
+  --discord-color-73: #6d597a;
+  --discord-color-74: #9d8df1;
+  --discord-color-75: #5a189a;
+  --discord-color-76: #ab83a1;
+  --discord-color-77: #9ac2c5;
+  --discord-color-78: #98ddca;
+  --discord-color-79: #dda0dd;
+  --discord-color-80: #f0a500;
+  --discord-color-81: #f18805;
+  --discord-color-82: #6a057f;
+  --discord-color-83: #acecd5;
+  --discord-color-84: #6ee7b7;
+  --discord-color-85: #dda0dd;
+  --discord-color-86: #3fa7d6;
+  --discord-color-87: #20b2aa;
+  --discord-color-88: #d157a0;
+  --discord-color-89: #d4a5a5;
+  --discord-color-90: #392f5a;
+  --discord-color-91: #dda0dd;
+  --discord-color-92: #ab83a1;
+  --discord-color-93: #dda0dd;
+  --discord-color-94: #ffe156;
+  --discord-color-95: #247ba0;
+  --discord-color-96: #50514f;
+  --discord-color-97: #f4e76e;
+  --discord-color-98: #247ba0;
+  --discord-color-99: #70c1b3;
 }
 
 body {
@@ -519,10 +620,10 @@ body.dark-mode {
 
 .table-results-container {
   /* Prevents the page from expanding when content is added. */
-  max-height: 125px;
+  max-height: 150px;
 
   /* Prevents the page from expanding when content is added. */
-  min-height: 125px;
+  min-height: 150px;
 
   width: 28vh;
   overflow-y: auto;
@@ -552,6 +653,7 @@ body.dark-mode {
   margin: 4px;
   display: flex;
   justify-content: space-between;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .table-results.good,
@@ -676,13 +778,14 @@ body.dark-mode {
   background-color: rgba(var(--correct-color-2-rgb-values), 0.1);
   padding: 8px;
   border-radius: 8px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .table-results-type,
 .demo-table-results-type,
 .demo-table-results-time,
 .table-results-time {
-  margin: 24px;
+  margin: 8px;
 }
 
 /* Mobile styles */
@@ -701,8 +804,8 @@ body.dark-mode {
   }
 
   .table-results-container {
-    max-height: 115px;
-    min-height: 115px;
+    max-height: 145px;
+    min-height: 145px;
   }
 
   .table-results-main-container {
@@ -735,4 +838,602 @@ body.dark-mode {
   .manual-content {
     font-size: 12px;
   }
+}
+
+/* More colors. */
+.discord-color-1 {
+  color: var(--discord-color-1);
+}
+.discord-color-2 {
+  color: var(--discord-color-2);
+}
+.discord-color-3 {
+  color: var(--discord-color-3);
+}
+.discord-color-4 {
+  color: var(--discord-color-4);
+}
+.discord-color-5 {
+  color: var(--discord-color-5);
+}
+.discord-color-6 {
+  color: var(--discord-color-6);
+}
+.discord-color-7 {
+  color: var(--discord-color-7);
+}
+.discord-color-8 {
+  color: var(--discord-color-8);
+}
+.discord-color-9 {
+  color: var(--discord-color-9);
+}
+.discord-color-10 {
+  color: var(--discord-color-10);
+}
+.discord-color-11 {
+  color: var(--discord-color-11);
+}
+.discord-color-12 {
+  color: var(--discord-color-12);
+}
+.discord-color-13 {
+  color: var(--discord-color-13);
+}
+.discord-color-14 {
+  color: var(--discord-color-14);
+}
+.discord-color-15 {
+  color: var(--discord-color-15);
+}
+.discord-color-16 {
+  color: var(--discord-color-16);
+}
+.discord-color-17 {
+  color: var(--discord-color-17);
+}
+.discord-color-18 {
+  color: var(--discord-color-18);
+}
+.discord-color-19 {
+  color: var(--discord-color-19);
+}
+.discord-color-20 {
+  color: var(--discord-color-20);
+}
+.discord-color-21 {
+  color: var(--discord-color-21);
+}
+.discord-color-22 {
+  color: var(--discord-color-22);
+}
+.discord-color-23 {
+  color: var(--discord-color-23);
+}
+.discord-color-24 {
+  color: var(--discord-color-24);
+}
+.discord-color-25 {
+  color: var(--discord-color-25);
+}
+.discord-color-26 {
+  color: var(--discord-color-26);
+}
+.discord-color-27 {
+  color: var(--discord-color-27);
+}
+.discord-color-28 {
+  color: var(--discord-color-28);
+}
+.discord-color-29 {
+  color: var(--discord-color-29);
+}
+.discord-color-30 {
+  color: var(--discord-color-30);
+}
+.discord-color-31 {
+  color: var(--discord-color-31);
+}
+.discord-color-32 {
+  color: var(--discord-color-32);
+}
+.discord-color-33 {
+  color: var(--discord-color-33);
+}
+.discord-color-34 {
+  color: var(--discord-color-34);
+}
+.discord-color-35 {
+  color: var(--discord-color-35);
+}
+.discord-color-36 {
+  color: var(--discord-color-36);
+}
+.discord-color-37 {
+  color: var(--discord-color-37);
+}
+.discord-color-38 {
+  color: var(--discord-color-38);
+}
+.discord-color-39 {
+  color: var(--discord-color-39);
+}
+.discord-color-40 {
+  color: var(--discord-color-40);
+}
+.discord-color-41 {
+  color: var(--discord-color-41);
+}
+.discord-color-42 {
+  color: var(--discord-color-42);
+}
+.discord-color-43 {
+  color: var(--discord-color-43);
+}
+.discord-color-44 {
+  color: var(--discord-color-44);
+}
+.discord-color-45 {
+  color: var(--discord-color-45);
+}
+.discord-color-46 {
+  color: var(--discord-color-46);
+}
+.discord-color-47 {
+  color: var(--discord-color-47);
+}
+.discord-color-48 {
+  color: var(--discord-color-48);
+}
+.discord-color-49 {
+  color: var(--discord-color-49);
+}
+.discord-color-50 {
+  color: var(--discord-color-50);
+}
+.discord-color-51 {
+  color: var(--discord-color-51);
+}
+.discord-color-52 {
+  color: var(--discord-color-52);
+}
+.discord-color-53 {
+  color: var(--discord-color-53);
+}
+.discord-color-54 {
+  color: var(--discord-color-54);
+}
+.discord-color-55 {
+  color: var(--discord-color-55);
+}
+.discord-color-56 {
+  color: var(--discord-color-56);
+}
+.discord-color-57 {
+  color: var(--discord-color-57);
+}
+.discord-color-58 {
+  color: var(--discord-color-58);
+}
+.discord-color-59 {
+  color: var(--discord-color-59);
+}
+.discord-color-60 {
+  color: var(--discord-color-60);
+}
+.discord-color-61 {
+  color: var(--discord-color-61);
+}
+.discord-color-62 {
+  color: var(--discord-color-62);
+}
+.discord-color-63 {
+  color: var(--discord-color-63);
+}
+.discord-color-64 {
+  color: var(--discord-color-64);
+}
+.discord-color-65 {
+  color: var(--discord-color-65);
+}
+.discord-color-66 {
+  color: var(--discord-color-66);
+}
+.discord-color-67 {
+  color: var(--discord-color-67);
+}
+.discord-color-68 {
+  color: var(--discord-color-68);
+}
+.discord-color-69 {
+  color: var(--discord-color-69);
+}
+.discord-color-70 {
+  color: var(--discord-color-70);
+}
+.discord-color-71 {
+  color: var(--discord-color-71);
+}
+.discord-color-72 {
+  color: var(--discord-color-72);
+}
+.discord-color-73 {
+  color: var(--discord-color-73);
+}
+.discord-color-74 {
+  color: var(--discord-color-74);
+}
+.discord-color-75 {
+  color: var(--discord-color-75);
+}
+.discord-color-76 {
+  color: var(--discord-color-76);
+}
+.discord-color-77 {
+  color: var(--discord-color-77);
+}
+.discord-color-78 {
+  color: var(--discord-color-78);
+}
+.discord-color-79 {
+  color: var(--discord-color-79);
+}
+.discord-color-80 {
+  color: var(--discord-color-80);
+}
+.discord-color-81 {
+  color: var(--discord-color-81);
+}
+.discord-color-82 {
+  color: var(--discord-color-82);
+}
+.discord-color-83 {
+  color: var(--discord-color-83);
+}
+.discord-color-84 {
+  color: var(--discord-color-84);
+}
+.discord-color-85 {
+  color: var(--discord-color-85);
+}
+.discord-color-86 {
+  color: var(--discord-color-86);
+}
+.discord-color-87 {
+  color: var(--discord-color-87);
+}
+.discord-color-88 {
+  color: var(--discord-color-88);
+}
+.discord-color-89 {
+  color: var(--discord-color-89);
+}
+.discord-color-90 {
+  color: var(--discord-color-90);
+}
+.discord-color-91 {
+  color: var(--discord-color-91);
+}
+.discord-color-92 {
+  color: var(--discord-color-92);
+}
+.discord-color-93 {
+  color: var(--discord-color-93);
+}
+.discord-color-94 {
+  color: var(--discord-color-94);
+}
+.discord-color-95 {
+  color: var(--discord-color-95);
+}
+.discord-color-96 {
+  color: var(--discord-color-96);
+}
+.discord-color-97 {
+  color: var(--discord-color-97);
+}
+.discord-color-98 {
+  color: var(--discord-color-98);
+}
+.discord-color-99 {
+  color: var(--discord-color-99);
+}
+
+/* More colors. */
+.discord-bg-color-1 {
+  background-color: var(--discord-color-1) !important;
+}
+.discord-bg-color-2 {
+  background-color: var(--discord-color-2) !important;
+}
+.discord-bg-color-3 {
+  background-color: var(--discord-color-3) !important;
+}
+.discord-bg-color-4 {
+  background-color: var(--discord-color-4) !important;
+}
+.discord-bg-color-5 {
+  background-color: var(--discord-color-5) !important;
+}
+.discord-bg-color-6 {
+  background-color: var(--discord-color-6) !important;
+}
+.discord-bg-color-7 {
+  background-color: var(--discord-color-7) !important;
+}
+.discord-bg-color-8 {
+  background-color: var(--discord-color-8) !important;
+}
+.discord-bg-color-9 {
+  background-color: var(--discord-color-9) !important;
+}
+.discord-bg-color-10 {
+  background-color: var(--discord-color-10) !important;
+}
+.discord-bg-color-11 {
+  background-color: var(--discord-color-11) !important;
+}
+.discord-bg-color-12 {
+  background-color: var(--discord-color-12) !important;
+}
+.discord-bg-color-13 {
+  background-color: var(--discord-color-13) !important;
+}
+.discord-bg-color-14 {
+  background-color: var(--discord-color-14) !important;
+}
+.discord-bg-color-15 {
+  background-color: var(--discord-color-15) !important;
+}
+.discord-bg-color-16 {
+  background-color: var(--discord-color-16) !important;
+}
+.discord-bg-color-17 {
+  background-color: var(--discord-color-17) !important;
+}
+.discord-bg-color-18 {
+  background-color: var(--discord-color-18) !important;
+}
+.discord-bg-color-19 {
+  background-color: var(--discord-color-19) !important;
+}
+.discord-bg-color-20 {
+  background-color: var(--discord-color-20) !important;
+}
+.discord-bg-color-21 {
+  background-color: var(--discord-color-21) !important;
+}
+.discord-bg-color-22 {
+  background-color: var(--discord-color-22) !important;
+}
+.discord-bg-color-23 {
+  background-color: var(--discord-color-23) !important;
+}
+.discord-bg-color-24 {
+  background-color: var(--discord-color-24) !important;
+}
+.discord-bg-color-25 {
+  background-color: var(--discord-color-25) !important;
+}
+.discord-bg-color-26 {
+  background-color: var(--discord-color-26) !important;
+}
+.discord-bg-color-27 {
+  background-color: var(--discord-color-27) !important;
+}
+.discord-bg-color-28 {
+  background-color: var(--discord-color-28) !important;
+}
+.discord-bg-color-29 {
+  background-color: var(--discord-color-29) !important;
+}
+.discord-bg-color-30 {
+  background-color: var(--discord-color-30) !important;
+}
+.discord-bg-color-31 {
+  background-color: var(--discord-color-31) !important;
+}
+.discord-bg-color-32 {
+  background-color: var(--discord-color-32) !important;
+}
+.discord-bg-color-33 {
+  background-color: var(--discord-color-33) !important;
+}
+.discord-bg-color-34 {
+  background-color: var(--discord-color-34) !important;
+}
+.discord-bg-color-35 {
+  background-color: var(--discord-color-35) !important;
+}
+.discord-bg-color-36 {
+  background-color: var(--discord-color-36) !important;
+}
+.discord-bg-color-37 {
+  background-color: var(--discord-color-37) !important;
+}
+.discord-bg-color-38 {
+  background-color: var(--discord-color-38) !important;
+}
+.discord-bg-color-39 {
+  background-color: var(--discord-color-39) !important;
+}
+.discord-bg-color-40 {
+  background-color: var(--discord-color-40) !important;
+}
+.discord-bg-color-41 {
+  background-color: var(--discord-color-41) !important;
+}
+.discord-bg-color-42 {
+  background-color: var(--discord-color-42) !important;
+}
+.discord-bg-color-43 {
+  background-color: var(--discord-color-43) !important;
+}
+.discord-bg-color-44 {
+  background-color: var(--discord-color-44) !important;
+}
+.discord-bg-color-45 {
+  background-color: var(--discord-color-45) !important;
+}
+.discord-bg-color-46 {
+  background-color: var(--discord-color-46) !important;
+}
+.discord-bg-color-47 {
+  background-color: var(--discord-color-47) !important;
+}
+.discord-bg-color-48 {
+  background-color: var(--discord-color-48) !important;
+}
+.discord-bg-color-49 {
+  background-color: var(--discord-color-49) !important;
+}
+.discord-bg-color-50 {
+  background-color: var(--discord-color-50) !important;
+}
+.discord-bg-color-51 {
+  background-color: var(--discord-color-51) !important;
+}
+.discord-bg-color-52 {
+  background-color: var(--discord-color-52) !important;
+}
+.discord-bg-color-53 {
+  background-color: var(--discord-color-53) !important;
+}
+.discord-bg-color-54 {
+  background-color: var(--discord-color-54) !important;
+}
+.discord-bg-color-55 {
+  background-color: var(--discord-color-55) !important;
+}
+.discord-bg-color-56 {
+  background-color: var(--discord-color-56) !important;
+}
+.discord-bg-color-57 {
+  background-color: var(--discord-color-57) !important;
+}
+.discord-bg-color-58 {
+  background-color: var(--discord-color-58) !important;
+}
+.discord-bg-color-59 {
+  background-color: var(--discord-color-59) !important;
+}
+.discord-bg-color-60 {
+  background-color: var(--discord-color-60) !important;
+}
+.discord-bg-color-61 {
+  background-color: var(--discord-color-61) !important;
+}
+.discord-bg-color-62 {
+  background-color: var(--discord-color-62) !important;
+}
+.discord-bg-color-63 {
+  background-color: var(--discord-color-63) !important;
+}
+.discord-bg-color-64 {
+  background-color: var(--discord-color-64) !important;
+}
+.discord-bg-color-65 {
+  background-color: var(--discord-color-65) !important;
+}
+.discord-bg-color-66 {
+  background-color: var(--discord-color-66) !important;
+}
+.discord-bg-color-67 {
+  background-color: var(--discord-color-67) !important;
+}
+.discord-bg-color-68 {
+  background-color: var(--discord-color-68) !important;
+}
+.discord-bg-color-69 {
+  background-color: var(--discord-color-69) !important;
+}
+.discord-bg-color-70 {
+  background-color: var(--discord-color-70) !important;
+}
+.discord-bg-color-71 {
+  background-color: var(--discord-color-71) !important;
+}
+.discord-bg-color-72 {
+  background-color: var(--discord-color-72) !important;
+}
+.discord-bg-color-73 {
+  background-color: var(--discord-color-73) !important;
+}
+.discord-bg-color-74 {
+  background-color: var(--discord-color-74) !important;
+}
+.discord-bg-color-75 {
+  background-color: var(--discord-color-75) !important;
+}
+.discord-bg-color-76 {
+  background-color: var(--discord-color-76) !important;
+}
+.discord-bg-color-77 {
+  background-color: var(--discord-color-77) !important;
+}
+.discord-bg-color-78 {
+  background-color: var(--discord-color-78) !important;
+}
+.discord-bg-color-79 {
+  background-color: var(--discord-color-79) !important;
+}
+.discord-bg-color-80 {
+  background-color: var(--discord-color-80) !important;
+}
+.discord-bg-color-81 {
+  background-color: var(--discord-color-81) !important;
+}
+.discord-bg-color-82 {
+  background-color: var(--discord-color-82) !important;
+}
+.discord-bg-color-83 {
+  background-color: var(--discord-color-83) !important;
+}
+.discord-bg-color-84 {
+  background-color: var(--discord-color-84) !important;
+}
+.discord-bg-color-85 {
+  background-color: var(--discord-color-85) !important;
+}
+.discord-bg-color-86 {
+  background-color: var(--discord-color-86) !important;
+}
+.discord-bg-color-87 {
+  background-color: var(--discord-color-87) !important;
+}
+.discord-bg-color-88 {
+  background-color: var(--discord-color-88) !important;
+}
+.discord-bg-color-89 {
+  background-color: var(--discord-color-89) !important;
+}
+.discord-bg-color-90 {
+  background-color: var(--discord-color-90) !important;
+}
+.discord-bg-color-91 {
+  background-color: var(--discord-color-91) !important;
+}
+.discord-bg-color-92 {
+  background-color: var(--discord-color-92) !important;
+}
+.discord-bg-color-93 {
+  background-color: var(--discord-color-93) !important;
+}
+.discord-bg-color-94 {
+  background-color: var(--discord-color-94) !important;
+}
+.discord-bg-color-95 {
+  background-color: var(--discord-color-95) !important;
+}
+.discord-bg-color-96 {
+  background-color: var(--discord-color-96) !important;
+}
+.discord-bg-color-97 {
+  background-color: var(--discord-color-97) !important;
+}
+.discord-bg-color-98 {
+  background-color: var(--discord-color-98) !important;
+}
+.discord-bg-color-99 {
+  background-color: var(--discord-color-99) !important;
 }
