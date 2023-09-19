@@ -160,6 +160,15 @@ revertButton.addEventListener("click", function () {
 });
 
 document.addEventListener("keydown", function (event) {
+  if (event.key === "1") {
+    performWrongAction();
+    return;
+  }
+  if (event.key === "2") {
+    performCorrectAction();
+    return;
+  }
+
   if (badArrowKeyCheckbox.checked && event.key === "ArrowLeft") {
     // Add your own logic for arrow keys if needed
     prevCorrectCount = correctCount;
