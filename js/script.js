@@ -698,3 +698,15 @@ buttons.forEach((btnId) => {
     correctAction();
   });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const isIOS =
+    /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  if (!isIOS) {
+    const link = document.createElement("link");
+    link.rel = "icon";
+    link.type = "image/png";
+    link.href = "../assets/images/pimsleur-icon.png";
+    document.getElementsByTagName("head")[0].appendChild(link);
+  }
+});
