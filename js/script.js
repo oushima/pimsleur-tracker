@@ -737,7 +737,7 @@ volumeSlider.addEventListener("input", (event) => {
   const volume = event.target.value;
   negativeSound.volume = volume;
   positiveSound.volume = volume;
-  volumeInput.value = volume * 100;
+  volumeInput.value = String(Math.round(volume * 100));
 });
 
 // Update volume when input changes
@@ -773,7 +773,7 @@ function validateInput(element) {
 
   // Check if the value is an integer and within range
   if (!Number.isInteger(+value) || value > 100 || value < 0) {
-    element.value = Math.min(Math.max(Math.round(value), 0), 100);
+    element.value = Number(Math.min(Math.max(Math.round(value), 0), 100));
   }
 }
 
