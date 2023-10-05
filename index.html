@@ -137,8 +137,42 @@
 
         <div class="settings-content-container">
           <div class="settings-content" id="settingsContent">
+            <!-- Audio slider. -->
+
             <!-- Enhanced Checkbox Containers -->
             <div class="options-container">
+              <div
+                class="volume-checkbox-container checkbox-container"
+                id="volumeControls"
+                style="display: none"
+              >
+                <div class="input-wrapper">
+                  <label class="volume-text">Volume:</label>
+                  <input
+                    class="audio-input"
+                    type="number"
+                    id="volumeInput"
+                    min="0"
+                    max="100"
+                    value="50"
+                    step="1"
+                    placeholder="50%"
+                    oninput="validateInput(this)"
+                    onkeydown="return isIntegerKey(event)"
+                  />
+                  <span class="percentage-symbol">%</span>
+                </div>
+                <input
+                  class="volume-slider"
+                  type="range"
+                  id="volumeSlider"
+                  min="0"
+                  max="1"
+                  step="0.1"
+                  value="0.5"
+                />
+              </div>
+
               <!-- Add Dark Mode Toggle Button -->
               <div class="checkbox-container">
                 <label class="custom-checkbox">

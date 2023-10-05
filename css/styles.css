@@ -1509,3 +1509,43 @@ body.dark-mode {
 .newest-row.fade-in {
   opacity: 1;
 }
+
+.audio-input {
+  width: 50px;
+  padding: 4px;
+}
+
+.percentage-symbol {
+  font-weight: bold;
+}
+
+.volume-checkbox-container {
+  display: flex !important;
+  background-color: var(--dark-color-2);
+  padding: 24px;
+  border-radius: 4px;
+  gap: 24px;
+}
+
+.audio-input {
+  background-color: var(--dark-color-1);
+  color: var(--nitro-color);
+  border-radius: 10px;
+  padding: 12px;
+  border: solid 0px var(--nitro-color-dark);
+}
+
+.volume-text {
+  margin-right: 10px;
+}
+
+.percentage-symbol {
+  background-color: var(--dark-color-1);
+  padding: 4px 8px;
+  border: solid 0px var(--nitro-color-dark);
+  border-radius: 100%;
+}
+
+.volume-slider {
+  color: var(--nitro-color);
+}

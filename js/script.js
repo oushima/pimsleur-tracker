@@ -19,6 +19,11 @@ const isAndroid = /Android/i.test(navigator.userAgent);
 soundEnabled = !isMobile;
 let vibrationEnabled = isAndroid;
 
+// Reference to the audio elements
+const volumeSlider = document.getElementById("volumeSlider");
+const volumeInput = document.getElementById("volumeInput");
+const volumeControls = document.getElementById("volumeControls");
+
 const correctButton = document.getElementById("correctButton");
 const wrongButton = document.getElementById("wrongButton");
 const correctCountEl = document.getElementById("correctCount");
@@ -719,3 +724,66 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementsByTagName("head")[0].appendChild(link);
   }
 });
+
+// Initially hide or show the volume controls based on sound toggle state
+window.addEventListener("DOMContentLoaded", () => {
+  if (soundToggle.checked) {
+    volumeControls.style.display = "block";
+  }
+});
+
+// Update volume when slider changes
+volumeSlider.addEventListener("input", (event) => {
+  const volume = event.target.value;
+  negativeSound.volume = volume;
+  positiveSound.volume = volume;
+  volumeInput.value = volume * 100;
+});
+
+// Update volume when input changes
+volumeInput.addEventListener("input", (event) => {
+  const volume = event.target.value / 100;
+  negativeSound.volume = volume;
+  positiveSound.volume = volume;
+  volumeSlider.value = volume;
+});
+
+// Show/hide volume controls when sound is toggled
+soundToggle.addEventListener("change", (event) => {
+  if (event.target.checked) {
+    volumeControls.style.display = "block";
+  } else {
+    volumeControls.style.display = "none";
+  }
+});
+
+document.getElementById("soundToggle").addEventListener("change", function () {
+  const isAudioEnabled = this.checked;
+  const volumeContainer = document.getElementById("volumeControls");
+
+  if (isAudioEnabled) {
+    volumeContainer.style.display = "block";
+  } else {
+    volumeContainer.style.display = "none";
+  }
+});
+
+function validateInput(element) {
+  let value = element.value;
+
+  // Check if the value is an integer and within range
+  if (!Number.isInteger(+value) || value > 100 || value < 0) {
+    element.value = Math.min(Math.max(Math.round(value), 0), 100);
+  }
+}
+
+function isIntegerKey(evt) {
+  var charCode = evt.which ? evt.which : evt.keyCode;
+
+  // Allow only backspace and delete (8 and 46), and numbers (48 to 57)
+  if (charCode !== 8 && charCode !== 46 && (charCode < 48 || charCode > 57)) {
+    return false;
+  }
+
+  return true;
+}
