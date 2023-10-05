@@ -1515,10 +1515,6 @@ body.dark-mode {
   padding: 4px;
 }
 
-.percentage-symbol {
-  font-weight: bold;
-}
-
 .volume-checkbox-container {
   display: flex !important;
   background-color: var(--dark-color-2);
@@ -1530,22 +1526,24 @@ body.dark-mode {
 .audio-input {
   background-color: var(--dark-color-1);
   color: var(--nitro-color);
-  border-radius: 10px;
+  border-radius: 8px;
   padding: 12px;
   border: solid 0px var(--nitro-color-dark);
+  text-align: center;
+  font-weight: bold;
 }
 
 .volume-text {
   margin-right: 10px;
 }
 
-.percentage-symbol {
-  background-color: var(--dark-color-1);
-  padding: 4px 8px;
-  border: solid 0px var(--nitro-color-dark);
-  border-radius: 100%;
-}
-
 .volume-slider {
   color: var(--nitro-color);
+}
+
+input[type="number"],
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  direction: rtl;
+  text-align: right;
 }
