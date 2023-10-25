@@ -740,12 +740,24 @@ volumeSlider.addEventListener("input", (event) => {
   volumeInput.value = String(Math.round(volume * 100));
 });
 
-// Update volume when input changes
-volumeInput.addEventListener("input", (event) => {
-  const volume = event.target.value / 100;
+// Function to set volume
+function setVolume(volumeValue) {
+  const volume = volumeValue / 100;
   negativeSound.volume = volume;
   positiveSound.volume = volume;
   volumeSlider.value = volume;
+  volumeInput.value = volumeValue;
+}
+
+// Update volume when input changes
+volumeInput.addEventListener("input", (event) => {
+  setVolume(event.target.value);
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Set default volume when site loads
+  const defaultVolumeValue = 5; // Set the default volume value as needed (0 to 100)
+  setVolume(defaultVolumeValue);
 });
 
 // Show/hide volume controls when sound is toggled
