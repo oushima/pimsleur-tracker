@@ -1537,6 +1537,10 @@ body.dark-mode {
   margin-right: 10px;
 }
 
+.filter-container {
+  display: flex;
+}
+
 .volume-slider {
   color: var(--nitro-color);
 }

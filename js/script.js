@@ -23,6 +23,7 @@ let vibrationEnabled = isAndroid;
 const volumeSlider = document.getElementById("volumeSlider");
 const volumeInput = document.getElementById("volumeInput");
 const volumeControls = document.getElementById("volumeControls");
+const lockScrollToggle = document.getElementById("lockScrollToggle");
 
 const correctButton = document.getElementById("correctButton");
 const wrongButton = document.getElementById("wrongButton");
@@ -60,6 +61,15 @@ const negativeSound = document.getElementById("negativeSound");
 let prevCorrectCount = 0;
 let prevWrongCount = 0;
 soundToggle.checked = soundEnabled;
+
+lockScrollToggle.addEventListener("change", function () {
+  if (this.checked) {
+    document.body.style.overflow = "hidden"; // Lock scroll
+  } else {
+    document.body.style.overflow = ""; // Unlock scroll
+  }
+  localStorage.setItem("lockScroll", this.checked);
+});
 
 document.addEventListener(
   "touchstart",
@@ -134,6 +144,8 @@ document.getElementById("confirmDone").addEventListener("click", function () {
   // Reset the data when 'Confirm' button in the modal is clicked
   correctCount = 0;
   wrongCount = 0;
+  removeItemsFromLocalStorage();
+
   actionStack = []; // reset the action stack
   updateCounts();
   removeAllRows();
@@ -156,11 +168,14 @@ revertButton.addEventListener("click", function () {
     wrongCount--;
   }
   updateCounts();
+  localStorage.setItem("correctCount", correctCount);
+  localStorage.setItem("wrongCount", wrongCount);
+  localStorage.setItem("actionStack", JSON.stringify(actionStack));
+
   removeRow();
   const rows = Array.from(rowContainer.getElementsByClassName("table-results"));
   if (rows.length < 2) {
     filterButton.classList.add("filter-mode-off");
-    return;
   }
 });
 
@@ -274,6 +289,16 @@ window.onclick = function (event) {
 // Dark mode.
 document.addEventListener("DOMContentLoaded", (event) => {
   const darkModeToggle = document.getElementById("darkModeToggle");
+  correctCount = parseInt(localStorage.getItem("correctCount")) || 0;
+  wrongCount = parseInt(localStorage.getItem("wrongCount")) || 0;
+  let storedActionStack = localStorage.getItem("actionStack");
+  actionStack = storedActionStack ? JSON.parse(storedActionStack) : [];
+  updateCounts();
+
+  const isScrollLocked =
+    JSON.parse(localStorage.getItem("lockScroll")) || false;
+  lockScrollToggle.checked = isScrollLocked;
+  document.body.style.overflow = isScrollLocked ? "hidden" : "";
 
   // Check for existing dark mode preference
   if (localStorage.getItem("isDarkMode") === "true") {
@@ -292,6 +317,24 @@ document.addEventListener("DOMContentLoaded", (event) => {
       document.body.classList.remove("dark-mode");
     }
   });
+
+  // Set default volume when site loads
+  const defaultVolumeValue = 5; // Set the default volume value as needed (0 to 100)
+  setVolume(defaultVolumeValue);
+
+  const isIOS =
+    /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  if (!isIOS) {
+    const link = document.createElement("link");
+    link.rel = "icon";
+    link.type = "image/png";
+    link.href = "../assets/images/pimsleur-icon.png";
+    document.getElementsByTagName("head")[0].appendChild(link);
+  }
+
+  if (soundToggle.checked) {
+    volumeControls.style.display = "block";
+  }
 });
 
 // Listen for changes to the vibration toggle checkbox
@@ -309,6 +352,11 @@ document.getElementById("soundToggle").addEventListener("change", function () {
 function initializeVibrationSetting() {
   const vibrationCheckbox = document.getElementById("vibrationToggle");
   vibrationEnabled = vibrationCheckbox.checked;
+}
+
+function removeItemsFromLocalStorage() {
+  localStorage.removeItem("correctCount");
+  localStorage.removeItem("wrongCount");
 }
 
 function initializeSoundSetting() {
@@ -352,6 +400,8 @@ function performCorrectAction() {
   updateCounts();
   addRow("good");
   filterButtonInit();
+  localStorage.setItem("correctCount", correctCount);
+  localStorage.setItem("actionStack", JSON.stringify(actionStack));
 }
 
 // Common logic for wrong actions
@@ -386,6 +436,8 @@ function performWrongAction() {
   updateCounts();
   addRow("bad");
   filterButtonInit();
+  localStorage.setItem("wrongCount", wrongCount);
+  localStorage.setItem("actionStack", JSON.stringify(actionStack));
 }
 
 function setTimeStamp() {
@@ -713,25 +765,6 @@ buttons.forEach((btnId) => {
   });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  const isIOS =
-    /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-  if (!isIOS) {
-    const link = document.createElement("link");
-    link.rel = "icon";
-    link.type = "image/png";
-    link.href = "../assets/images/pimsleur-icon.png";
-    document.getElementsByTagName("head")[0].appendChild(link);
-  }
-});
-
-// Initially hide or show the volume controls based on sound toggle state
-window.addEventListener("DOMContentLoaded", () => {
-  if (soundToggle.checked) {
-    volumeControls.style.display = "block";
-  }
-});
-
 // Update volume when slider changes
 volumeSlider.addEventListener("input", (event) => {
   const volume = event.target.value;
@@ -752,12 +785,6 @@ function setVolume(volumeValue) {
 // Update volume when input changes
 volumeInput.addEventListener("input", (event) => {
   setVolume(event.target.value);
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-  // Set default volume when site loads
-  const defaultVolumeValue = 5; // Set the default volume value as needed (0 to 100)
-  setVolume(defaultVolumeValue);
 });
 
 // Show/hide volume controls when sound is toggled
