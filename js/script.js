@@ -65,8 +65,10 @@ soundToggle.checked = soundEnabled;
 lockScrollToggle.addEventListener("change", function () {
   if (this.checked) {
     document.body.style.overflow = "hidden"; // Lock scroll
+    void document.body.offsetHeight; // Trigger reflow
   } else {
     document.body.style.overflow = ""; // Unlock scroll
+    void document.body.offsetHeight; // Trigger reflow
   }
   localStorage.setItem("lockScroll", this.checked);
 });
